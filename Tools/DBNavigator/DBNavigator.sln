@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBNavigator", "DBNavigator\DBNavigator.csproj", "{6B85E901-272C-438D-950B-46B23117BF3D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DBNavigatorSetup", "DBNavigatorSetup\DBNavigatorSetup.vdproj", "{28623741-180D-458D-9FA7-1AE9AC11A07D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B85E901-272C-438D-950B-46B23117BF3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B85E901-272C-438D-950B-46B23117BF3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B85E901-272C-438D-950B-46B23117BF3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B85E901-272C-438D-950B-46B23117BF3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28623741-180D-458D-9FA7-1AE9AC11A07D}.Debug|Any CPU.ActiveCfg = Debug
+		{28623741-180D-458D-9FA7-1AE9AC11A07D}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

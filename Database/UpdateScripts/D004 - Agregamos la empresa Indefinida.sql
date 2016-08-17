@@ -1,0 +1,2 @@
+INSERT INTO Company(CompanyName, CompanyFullName, CompanyCity, LogoFilePath, Active, Creator, Created, LogoSize) 
+VALUES ('Indefinida', 'INDEFINIDA', 'San Pedro Garza García, Nuevo León, México', 'Indefinida logo.bmp', 'A', 'admin', GETDATE(), '3.0cm');

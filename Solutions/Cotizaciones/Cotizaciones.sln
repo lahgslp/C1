@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cotizaciones", "Cotizaciones\Cotizaciones.csproj", "{40DA6C8F-ACB6-4EDB-B61A-0BFC6A0F1ECB}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CotizacionesSetup", "CotizacionesSetup\CotizacionesSetup.vdproj", "{01012F3F-8028-424C-A36A-7A121CD5C467}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40DA6C8F-ACB6-4EDB-B61A-0BFC6A0F1ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40DA6C8F-ACB6-4EDB-B61A-0BFC6A0F1ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40DA6C8F-ACB6-4EDB-B61A-0BFC6A0F1ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40DA6C8F-ACB6-4EDB-B61A-0BFC6A0F1ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01012F3F-8028-424C-A36A-7A121CD5C467}.Debug|Any CPU.ActiveCfg = Debug
+		{01012F3F-8028-424C-A36A-7A121CD5C467}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

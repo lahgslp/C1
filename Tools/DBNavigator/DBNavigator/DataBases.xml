@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataBases>
+	<DataBase Name="FersumDev01" ConnectionString="Server=LUISHP\SQLEXPRESS;Database=FersumDev01;Trusted_Connection=true;"/>
+</DataBases>
