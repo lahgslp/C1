@@ -491,8 +491,8 @@ namespace Cotizaciones.PDFWriter
             col.Id = Count++;
             col.Header = "Cantidad Requerida";
             col.Comment = "";
-            col.Size = "1.5cm";
-            col.Format = "F1";
+            col.Size = "1.4cm";
+            col.Format = "N0";
             col.MapsToColumn = "Quantity";
             columns.Add(col);
 
@@ -500,8 +500,8 @@ namespace Cotizaciones.PDFWriter
             col.Id = Count++;
             col.Header = "Peso Total";
             col.Comment = "Kgs";
-            col.Size = "1.5cm";
-            col.Format = "F1";
+            col.Size = "1.3cm";
+            col.Format = "N0";
             col.MapsToColumn = "Weight";
             columns.Add(col);
 
@@ -509,7 +509,7 @@ namespace Cotizaciones.PDFWriter
             col.Id = Count++;
             col.Header = "Peso Lineal";
             col.Comment = "Kg/m";
-            col.Size = "1.5cm";
+            col.Size = "1.3cm";
             col.Format = "F2";
             col.MapsToColumn = "LinearWeight";
             columns.Add(col);
@@ -525,7 +525,7 @@ namespace Cotizaciones.PDFWriter
             col = new ColumnDefinition();
             col.Id = Count++;
             col.Header = "Total partida";
-            col.Size = "1.7cm";
+            col.Size = "2.1cm";
             col.Format = "C0";
             col.MapsToColumn = "TotalPerConcept";
             columns.Add(col);
@@ -534,7 +534,7 @@ namespace Cotizaciones.PDFWriter
             col.Id = Count++;
             col.Header = "Lugar y Tiempo de Entrega";
             col.Comment = "";
-            col.Size = "5.05cm";            
+            col.Size = "5.15cm";            
             col.MapsToColumn = "DeliveryDescription";
             columns.Add(col);
 
