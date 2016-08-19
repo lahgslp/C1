@@ -349,14 +349,9 @@
   </Target>
   -->
   <PropertyGroup>
-    <PreBuildEvent>if $(ConfigurationName) == Release (
-$(ProjectDir)..\..\..\Tools\GetSVNLatestRevision\GetSVNLatestRevision\bin\Release\GetSVNLatestRevision.exe /target:https://cornproject01.googlecode.com/svn /basepath:C:\Projects\Fersum\cornproject01 /currentpath:$(ProjectDir) /pathtoassembly:$(ProjectDir)Properties
-rem copy $(ProjectDir)App.config $(ProjectDir)App.Debug.config
-rem copy $(ProjectDir)App.$(ConfigurationName).config $(ProjectDir)App.config
-)</PreBuildEvent>
-    <PostBuildEvent>if $(ConfigurationName) == Release (
-rem copy $(ProjectDir)App.Debug.config $(ProjectDir)App.config
-rem del $(ProjectDir)App.Debug.config
-)</PostBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
