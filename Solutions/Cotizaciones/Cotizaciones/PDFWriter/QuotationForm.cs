@@ -492,7 +492,7 @@ namespace Cotizaciones.PDFWriter
             col.Header = "Cantidad Requerida";
             col.Comment = "";
             col.Size = "1.4cm";
-            col.Format = "N0";
+            col.Format = "N";
             col.MapsToColumn = "Quantity";
             columns.Add(col);
 
@@ -501,7 +501,7 @@ namespace Cotizaciones.PDFWriter
             col.Header = "Peso Total";
             col.Comment = "Kgs";
             col.Size = "1.3cm";
-            col.Format = "N0";
+            col.Format = "N";
             col.MapsToColumn = "Weight";
             columns.Add(col);
 
