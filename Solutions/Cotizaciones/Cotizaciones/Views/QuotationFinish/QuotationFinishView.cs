@@ -58,31 +58,40 @@ namespace Cotizaciones.Views
             this.QuotationStatusTypeID = (Cotizaciones.Enums.QuotationStatusType)q.QuotationStatusTypeID;
             this.txtNotes.Text = q.Notes;
             this.txtFootNotes.Text = q.FootNoteDescription;
-            if (q.ValidPeriodDescription != String.Empty && IsReadOnly == false)
+            if (q.ValidPeriodDescription != String.Empty)
             {
                 this.cmbValidPeriodType.Value = q.ValidPeriodDescription;
             }
             else
             {
-                this.cmbValidPeriodType.Value = ReferenceData.Tables["Table"].Rows[0]["Description"].ToString();
+                if (!IsReadOnly)
+                {
+                    this.cmbValidPeriodType.Value = ReferenceData.Tables["Table"].Rows[0]["Description"].ToString();
+                }
             }
 
-            if (q.PaymentDescription != String.Empty && IsReadOnly == false)
+            if (q.PaymentDescription != String.Empty)
             {
                 this.cmbPaymentType.Value = q.PaymentDescription;
             }
             else
             {
-                this.cmbPaymentType.Value = ReferenceData.Tables["Table1"].Rows[0]["Description"].ToString();
+                if (!IsReadOnly)
+                {
+                    this.cmbPaymentType.Value = ReferenceData.Tables["Table1"].Rows[0]["Description"].ToString();
+                }
             }
 
-            if (q.InvoiceMethodDescription != String.Empty && IsReadOnly == false)
+            if (q.InvoiceMethodDescription != String.Empty)
             {
                 this.cmbInvoiceMethodType.Value = q.InvoiceMethodDescription;
             }
             else
             {
-                this.cmbInvoiceMethodType.Value = ReferenceData.Tables["Table2"].Rows[0]["Description"].ToString();
+                if (!IsReadOnly)
+                {
+                    this.cmbInvoiceMethodType.Value = ReferenceData.Tables["Table2"].Rows[0]["Description"].ToString();
+                }
             }
             EnableDisableControls();
         }
