@@ -13,7 +13,7 @@ SELECT (SELECT Value FROM ConfigurationKey WHERE Name = 'FakeUser') AS ShortName
 UNION
 SELECT
 	--UserID,
-	ShortName,
+	LOWER(ShortName),
 	FullName
 FROM [dbo].[User]
 WHERE ShortName <> (SELECT Value FROM ConfigurationKey WHERE Name = 'AdminUser');

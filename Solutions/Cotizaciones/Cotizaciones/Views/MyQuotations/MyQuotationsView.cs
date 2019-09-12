@@ -70,7 +70,7 @@ namespace Cotizaciones.Views
 
         private void LoadFilterValues()
         {
-            this.cmbCreator.Value = Properties.Settings.Default.FilterLastUserValue == String.Empty ? this.User : Properties.Settings.Default.FilterLastUserValue;
+            this.cmbCreator.Value = Properties.Settings.Default.FilterLastUserValue == String.Empty ? this.User.ToLower() : Properties.Settings.Default.FilterLastUserValue;
             if (Properties.Settings.Default.FilterLastQuotationIDValue != 0)
             {
                 this.uneQuotationID.Value = Properties.Settings.Default.FilterLastQuotationIDValue;
