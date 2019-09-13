@@ -81,10 +81,10 @@
             this.btnPreliminaryView = new Infragistics.Win.Misc.UltraButton();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.txtNotes = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.btnCloseAndSend = new Infragistics.Win.Misc.UltraButton();
             this.btnNext = new Infragistics.Win.Misc.UltraButton();
             this.btnBack = new Infragistics.Win.Misc.UltraButton();
             this.btnClose = new Infragistics.Win.Misc.UltraButton();
-            this.btnCloseAndSend = new Infragistics.Win.Misc.UltraButton();
             this.MainPanel.SuspendLayout();
             this.MainSplitContainer.Panel1.SuspendLayout();
             this.MainSplitContainer.Panel2.SuspendLayout();
@@ -103,7 +103,7 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1606, 864);
+            this.MainPanel.Size = new System.Drawing.Size(1607, 587);
             this.MainPanel.TabIndex = 0;
             // 
             // MainSplitContainer
@@ -125,8 +125,8 @@
             this.MainSplitContainer.Panel2.Controls.Add(this.btnNext);
             this.MainSplitContainer.Panel2.Controls.Add(this.btnBack);
             this.MainSplitContainer.Panel2.Controls.Add(this.btnClose);
-            this.MainSplitContainer.Size = new System.Drawing.Size(1606, 864);
-            this.MainSplitContainer.SplitterDistance = 831;
+            this.MainSplitContainer.Size = new System.Drawing.Size(1607, 587);
+            this.MainSplitContainer.SplitterDistance = 554;
             this.MainSplitContainer.TabIndex = 0;
             // 
             // MainGroupBox
@@ -148,7 +148,7 @@
             this.MainGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainGroupBox.Location = new System.Drawing.Point(0, 0);
             this.MainGroupBox.Name = "MainGroupBox";
-            this.MainGroupBox.Size = new System.Drawing.Size(1606, 831);
+            this.MainGroupBox.Size = new System.Drawing.Size(1607, 554);
             this.MainGroupBox.TabIndex = 0;
             this.MainGroupBox.TabStop = false;
             this.MainGroupBox.Text = "Finalización de Cotización";
@@ -158,7 +158,7 @@
             this.lblWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblWarning.Location = new System.Drawing.Point(6, 815);
+            this.lblWarning.Location = new System.Drawing.Point(6, 538);
             this.lblWarning.Name = "lblWarning";
             this.lblWarning.Size = new System.Drawing.Size(429, 13);
             this.lblWarning.TabIndex = 14;
@@ -166,7 +166,7 @@
             // 
             // lblFootNotes
             // 
-            this.lblFootNotes.Location = new System.Drawing.Point(6, 89);
+            this.lblFootNotes.Location = new System.Drawing.Point(6, 209);
             this.lblFootNotes.Name = "lblFootNotes";
             this.lblFootNotes.Size = new System.Drawing.Size(100, 23);
             this.lblFootNotes.TabIndex = 13;
@@ -176,17 +176,17 @@
             // 
             this.txtFootNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFootNotes.Location = new System.Drawing.Point(112, 89);
+            this.txtFootNotes.Location = new System.Drawing.Point(112, 209);
             this.txtFootNotes.MaxLength = 1024;
             this.txtFootNotes.Multiline = true;
             this.txtFootNotes.Name = "txtFootNotes";
             this.txtFootNotes.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtFootNotes.Size = new System.Drawing.Size(1488, 64);
+            this.txtFootNotes.Size = new System.Drawing.Size(1489, 64);
             this.txtFootNotes.TabIndex = 1;
             // 
             // ultraLabel4
             // 
-            this.ultraLabel4.Location = new System.Drawing.Point(6, 214);
+            this.ultraLabel4.Location = new System.Drawing.Point(6, 334);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel4.TabIndex = 11;
@@ -252,15 +252,15 @@
             this.cmbInvoiceMethodType.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.cmbInvoiceMethodType.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.cmbInvoiceMethodType.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Default;
-            this.cmbInvoiceMethodType.Location = new System.Drawing.Point(112, 215);
+            this.cmbInvoiceMethodType.Location = new System.Drawing.Point(112, 335);
             this.cmbInvoiceMethodType.Name = "cmbInvoiceMethodType";
-            this.cmbInvoiceMethodType.Size = new System.Drawing.Size(1488, 22);
+            this.cmbInvoiceMethodType.Size = new System.Drawing.Size(1489, 22);
             this.cmbInvoiceMethodType.TabIndex = 4;
             this.cmbInvoiceMethodType.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cmbInvoiceMethodType_BeforeDropDown);
             // 
             // ultraLabel3
             // 
-            this.ultraLabel3.Location = new System.Drawing.Point(6, 186);
+            this.ultraLabel3.Location = new System.Drawing.Point(6, 306);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel3.TabIndex = 9;
@@ -326,15 +326,15 @@
             this.cmbPaymentType.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.cmbPaymentType.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.cmbPaymentType.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Default;
-            this.cmbPaymentType.Location = new System.Drawing.Point(112, 159);
+            this.cmbPaymentType.Location = new System.Drawing.Point(112, 279);
             this.cmbPaymentType.Name = "cmbPaymentType";
-            this.cmbPaymentType.Size = new System.Drawing.Size(1488, 22);
+            this.cmbPaymentType.Size = new System.Drawing.Size(1489, 22);
             this.cmbPaymentType.TabIndex = 2;
             this.cmbPaymentType.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cmbPaymentType_BeforeDropDown);
             // 
             // ultraLabel2
             // 
-            this.ultraLabel2.Location = new System.Drawing.Point(6, 158);
+            this.ultraLabel2.Location = new System.Drawing.Point(6, 278);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel2.TabIndex = 7;
@@ -400,9 +400,9 @@
             this.cmbValidPeriodType.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.cmbValidPeriodType.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.cmbValidPeriodType.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Default;
-            this.cmbValidPeriodType.Location = new System.Drawing.Point(112, 187);
+            this.cmbValidPeriodType.Location = new System.Drawing.Point(112, 307);
             this.cmbValidPeriodType.Name = "cmbValidPeriodType";
-            this.cmbValidPeriodType.Size = new System.Drawing.Size(1488, 22);
+            this.cmbValidPeriodType.Size = new System.Drawing.Size(1489, 22);
             this.cmbValidPeriodType.TabIndex = 3;
             this.cmbValidPeriodType.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cmbValidPeriodType_BeforeDropDown);
             // 
@@ -410,7 +410,7 @@
             // 
             this.btnFinalize.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnFinalize.Enabled = false;
-            this.btnFinalize.Location = new System.Drawing.Point(728, 272);
+            this.btnFinalize.Location = new System.Drawing.Point(728, 392);
             this.btnFinalize.Name = "btnFinalize";
             this.btnFinalize.Size = new System.Drawing.Size(150, 23);
             this.btnFinalize.TabIndex = 6;
@@ -421,7 +421,7 @@
             // 
             this.btnFinalizeAndSend.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnFinalizeAndSend.Enabled = false;
-            this.btnFinalizeAndSend.Location = new System.Drawing.Point(728, 301);
+            this.btnFinalizeAndSend.Location = new System.Drawing.Point(728, 421);
             this.btnFinalizeAndSend.Name = "btnFinalizeAndSend";
             this.btnFinalizeAndSend.Size = new System.Drawing.Size(150, 23);
             this.btnFinalizeAndSend.TabIndex = 7;
@@ -431,7 +431,7 @@
             // btnPreliminaryView
             // 
             this.btnPreliminaryView.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnPreliminaryView.Location = new System.Drawing.Point(728, 243);
+            this.btnPreliminaryView.Location = new System.Drawing.Point(728, 363);
             this.btnPreliminaryView.Name = "btnPreliminaryView";
             this.btnPreliminaryView.Size = new System.Drawing.Size(150, 23);
             this.btnPreliminaryView.TabIndex = 5;
@@ -455,14 +455,24 @@
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtNotes.Size = new System.Drawing.Size(1488, 64);
+            this.txtNotes.Size = new System.Drawing.Size(1489, 182);
             this.txtNotes.TabIndex = 0;
+            // 
+            // btnCloseAndSend
+            // 
+            this.btnCloseAndSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCloseAndSend.Location = new System.Drawing.Point(1469, 3);
+            this.btnCloseAndSend.Name = "btnCloseAndSend";
+            this.btnCloseAndSend.Size = new System.Drawing.Size(135, 23);
+            this.btnCloseAndSend.TabIndex = 3;
+            this.btnCloseAndSend.Text = "Cerrar y confirmar envio";
+            this.btnCloseAndSend.Click += new System.EventHandler(this.btnCloseAndSend_Click);
             // 
             // btnNext
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(1306, 3);
+            this.btnNext.Location = new System.Drawing.Point(1307, 3);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 1;
@@ -471,7 +481,7 @@
             // btnBack
             // 
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack.Location = new System.Drawing.Point(1225, 3);
+            this.btnBack.Location = new System.Drawing.Point(1226, 3);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 0;
@@ -481,22 +491,12 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(1387, 3);
+            this.btnClose.Location = new System.Drawing.Point(1388, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "&Cerrar";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnCloseAndSend
-            // 
-            this.btnCloseAndSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseAndSend.Location = new System.Drawing.Point(1468, 3);
-            this.btnCloseAndSend.Name = "btnCloseAndSend";
-            this.btnCloseAndSend.Size = new System.Drawing.Size(135, 23);
-            this.btnCloseAndSend.TabIndex = 3;
-            this.btnCloseAndSend.Text = "Cerrar y confirmar envio";
-            this.btnCloseAndSend.Click += new System.EventHandler(this.btnCloseAndSend_Click);
             // 
             // QuotationFinishView
             // 
@@ -504,7 +504,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.MainPanel);
             this.Name = "QuotationFinishView";
-            this.Size = new System.Drawing.Size(1606, 864);
+            this.Size = new System.Drawing.Size(1607, 587);
             this.Load += new System.EventHandler(this.QuotationFinishView_Load);
             this.MainPanel.ResumeLayout(false);
             this.MainSplitContainer.Panel1.ResumeLayout(false);
