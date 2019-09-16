@@ -98,6 +98,7 @@
     <Compile Include="Common\IconExtractor.cs" />
     <Compile Include="Common\Logger.cs" />
     <Compile Include="Common\OutlookDataObject.cs" />
+    <Compile Include="Common\PreferencesHelper.cs" />
     <Compile Include="Common\Utilities.cs" />
     <Compile Include="DataManagers\CustomerInfoManager.cs" />
     <Compile Include="DataManagers\EditCustomersManager.cs" />

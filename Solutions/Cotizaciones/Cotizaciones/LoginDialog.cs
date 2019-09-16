@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Cotizaciones.DataManagers;
+using Cotizaciones.Common;
 
 namespace Cotizaciones
 {
@@ -26,10 +27,9 @@ namespace Cotizaciones
         {
             if (LoginManager.IsValidUser(this.txtUser.Text, this.txtPassword.Text) == true)
             {
-                if (Properties.Settings.Default.DefaultUser != this.txtUser.Text)
+                if (PreferencesHelper.GetPreference("DefaultUser") != this.txtUser.Text)
                 {
-                    Properties.Settings.Default.DefaultUser = this.txtUser.Text;
-                    Properties.Settings.Default.Save();
+                    PreferencesHelper.SetPreference("DefaultUser", this.txtUser.Text);
                 }
                 this.DialogResult = DialogResult.OK;
                 this.Close();

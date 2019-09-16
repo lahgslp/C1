@@ -11,7 +11,7 @@ namespace Cotizaciones.Common
         public static void LogException(Exception e)
         {
             StreamWriter SW;
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\" + ConfigurationHelper.GetConfigurationValue("RoamingFolder");
             SW = File.AppendText(path + "\\" + ConfigurationHelper.GetConfigurationValue("LogFile"));
             SW.WriteLine("--------------------------------------------------");
             SW.WriteLine(DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString());
