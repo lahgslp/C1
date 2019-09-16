@@ -63,13 +63,14 @@ namespace Cotizaciones
 
         private void LoginDialog_Shown(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.DefaultUser == String.Empty)
+            string defaultUser = PreferencesHelper.GetPreference("DefaultUser");
+            if (defaultUser == String.Empty)
             {
                 this.txtUser.Focus();
             }
             else
             {
-                this.txtUser.Text = Properties.Settings.Default.DefaultUser;
+                this.txtUser.Text = defaultUser;
                 this.txtPassword.Focus();
             }
         }

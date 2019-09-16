@@ -7,6 +7,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Cotizaciones.Common;
 using Cotizaciones.Enums;
 using Cotizaciones.Dialogs;
 using System.Reflection;
@@ -56,7 +57,7 @@ namespace Cotizaciones
         
         void EnableDisableMenuOptions()
         {
-            if (Properties.Settings.Default.DefaultUser != Utilities.GetConfigurationKeyValue("AdminUser"))
+            if (PreferencesHelper.GetPreference("DefaultUser") != Utilities.GetConfigurationKeyValue("AdminUser"))
             {
                 this.administracionDeUsuariosToolStripMenuItem.Enabled = false;
                 this.administracionDeDiametrosToolStripMenuItem.Enabled = false;
@@ -117,7 +118,7 @@ namespace Cotizaciones
 
         private void preferenciasDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserPreferencesDialog dialog = new UserPreferencesDialog(Properties.Settings.Default.DefaultUser);
+            UserPreferencesDialog dialog = new UserPreferencesDialog(PreferencesHelper.GetPreference("DefaultUser"));
             if (dialog.ShowDialog() == DialogResult.OK)
             {
             }
@@ -125,7 +126,7 @@ namespace Cotizaciones
 
         private void administracionDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserManagementDialog dialog = new UserManagementDialog(Properties.Settings.Default.DefaultUser);
+            UserManagementDialog dialog = new UserManagementDialog(PreferencesHelper.GetPreference("DefaultUser"));
             if (dialog.ShowDialog() == DialogResult.OK)
             {
             }
@@ -138,7 +139,7 @@ namespace Cotizaciones
 
         private void administracionDeDiametrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditDiameterDialog dialog = new EditDiameterDialog(Properties.Settings.Default.DefaultUser);
+            EditDiameterDialog dialog = new EditDiameterDialog(PreferencesHelper.GetPreference("DefaultUser"));
             if (dialog.ShowDialog() == DialogResult.OK)
             {
             }
@@ -146,7 +147,7 @@ namespace Cotizaciones
 
         private void administracionDeEmpresasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditCustomersDialog dialog = new EditCustomersDialog(Properties.Settings.Default.DefaultUser);
+            EditCustomersDialog dialog = new EditCustomersDialog(PreferencesHelper.GetPreference("DefaultUser"));
             if (dialog.ShowDialog() == DialogResult.OK)
             { }
         }

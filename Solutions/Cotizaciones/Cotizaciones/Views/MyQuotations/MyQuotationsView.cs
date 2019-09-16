@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Cotizaciones.Common;
 using Cotizaciones.DataModel;
 using Cotizaciones.Enums;
 using Cotizaciones.DataManagers;
@@ -53,7 +54,7 @@ namespace Cotizaciones.Views
         private void MyQuotationsView_Load(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            this.User = Properties.Settings.Default.DefaultUser;
+            this.User = PreferencesHelper.GetPreference("DefaultUser");
             ResetStatusBarMessages();
             ReferenceData = MyQuotationsManager.GetMyQuotationsReferenceData();
             InitializeControls();
@@ -70,40 +71,58 @@ namespace Cotizaciones.Views
 
         private void LoadFilterValues()
         {
-            this.cmbCreator.Value = Properties.Settings.Default.FilterLastUserValue == String.Empty ? this.User.ToLower() : Properties.Settings.Default.FilterLastUserValue;
-            if (Properties.Settings.Default.FilterLastQuotationIDValue != 0)
+            string filterLastUserValue = PreferencesHelper.GetPreference("FilterLastUserValue");
+            this.cmbCreator.Value = filterLastUserValue == String.Empty ? this.User.ToLower() : filterLastUserValue;
+
+            int filterLastQuotationIDValue = Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastQuotationIDValue"));
+            if (filterLastQuotationIDValue != 0)
             {
-                this.uneQuotationID.Value = Properties.Settings.Default.FilterLastQuotationIDValue;
+                this.uneQuotationID.Value = filterLastQuotationIDValue;
             }
-            if (Properties.Settings.Default.FilterLastQuotationStatusTypeID != 0)
+
+            int filterLastQuotationStatusTypeID = Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastQuotationStatusTypeID"));
+            if (filterLastQuotationStatusTypeID != 0)
             {
-                this.cmbQuotationStatusType.Value = Properties.Settings.Default.FilterLastQuotationStatusTypeID;
+                this.cmbQuotationStatusType.Value = filterLastQuotationStatusTypeID;
             }
-            if (Properties.Settings.Default.FilterLastDateFromValue != "")
+
+            string filterLastDateFromValue = PreferencesHelper.GetPreference("FilterLastDateFromValue");
+            if (filterLastDateFromValue != "")
             {
-                this.dtDateFrom.Value = Utilities.ConvertToDate(Properties.Settings.Default.FilterLastDateFromValue);
+                this.dtDateFrom.Value = Utilities.ConvertToDate(filterLastDateFromValue);
             }
-            if (Properties.Settings.Default.FilterLastDateToValue != "")
+
+            string filterLastDateToValue = PreferencesHelper.GetPreference("FilterLastDateToValue");
+            if (filterLastDateToValue != "")
             {
-                this.dtDateTo.Value = Utilities.ConvertToDate(Properties.Settings.Default.FilterLastDateToValue);
+                this.dtDateTo.Value = Utilities.ConvertToDate(filterLastDateToValue);
             }
-            if (Properties.Settings.Default.FilterLastSectionTypeIDValue != 0)
+
+            int filterLastSectionTypeIDValue = Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastSectionTypeIDValue"));
+            if (filterLastSectionTypeIDValue != 0)
             {
-                this.cmbSectionType.Value = Properties.Settings.Default.FilterLastSectionTypeIDValue;
+                this.cmbSectionType.Value = filterLastSectionTypeIDValue;
             }
-            if (Properties.Settings.Default.FilterLastPipeDiameterTypeIDValue != 0)
+
+            int filterLastPipeDiameterTypeIDValue = Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastPipeDiameterTypeIDValue"));
+            if (filterLastPipeDiameterTypeIDValue != 0)
             {
-                this.cmbDiameterType.Value = Properties.Settings.Default.FilterLastPipeDiameterTypeIDValue;
+                this.cmbDiameterType.Value = filterLastPipeDiameterTypeIDValue;
             }
-            if (Properties.Settings.Default.FilterLastCustomerIDValue != 0)
+
+            int filterLastCustomerIDValue = Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastCustomerIDValue"));
+            if (filterLastCustomerIDValue != 0)
             {
-                this.cmbCustomer.Value = Properties.Settings.Default.FilterLastCustomerIDValue;
+                this.cmbCustomer.Value = filterLastCustomerIDValue;
             }
-            if (Properties.Settings.Default.FilterLastCustomerContactIDValue != 0)
+
+            int filterLastCustomerContactIDValue = Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastCustomerContactIDValue"));
+            if (filterLastCustomerContactIDValue != 0)
             {
-                this.cmbCustomerContact.Value = Properties.Settings.Default.FilterLastCustomerContactIDValue;
+                this.cmbCustomerContact.Value = filterLastCustomerContactIDValue;
             }
-            this.cmbCompany.Value = Properties.Settings.Default.FilterLastCompanyIDValue;
+
+            this.cmbCompany.Value = PreferencesHelper.GetPreference("FilterLastCompanyIDValue");
         }
 
         void DisableControls()
@@ -200,7 +219,8 @@ namespace Cotizaciones.Views
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearSavedFilters();
-            this.cmbCreator.Value = Properties.Settings.Default.FilterLastUserValue == String.Empty ? this.User : Properties.Settings.Default.FilterLastUserValue;
+            string filterLastUserValue = PreferencesHelper.GetPreference("FilterLastUserValue");
+            this.cmbCreator.Value = filterLastUserValue == String.Empty ? this.User : filterLastUserValue;
             this.cmbCustomer.Value = null;
             this.cmbCustomerContact.Value = null;
             this.dtDateFrom.Value = null;
@@ -214,16 +234,15 @@ namespace Cotizaciones.Views
 
         private void ClearSavedFilters()
         {
-            Properties.Settings.Default.FilterLastQuotationIDValue = 0;
-            Properties.Settings.Default.FilterLastQuotationStatusTypeID = 0;
-            Properties.Settings.Default.FilterLastDateFromValue = "";
-            Properties.Settings.Default.FilterLastDateToValue = "";
-            Properties.Settings.Default.FilterLastSectionTypeIDValue = 0;
-            Properties.Settings.Default.FilterLastPipeDiameterTypeIDValue = 0;
-            Properties.Settings.Default.FilterLastCustomerIDValue = 0;
-            Properties.Settings.Default.FilterLastCustomerContactIDValue = 0;
-            Properties.Settings.Default.FilterLastCompanyIDValue = 0;
-            Properties.Settings.Default.Save();
+            PreferencesHelper.SetPreference("FilterLastQuotationIDValue", "0");
+            PreferencesHelper.SetPreference("FilterLastQuotationStatusTypeID", "0");
+            PreferencesHelper.SetPreference("FilterLastDateFromValue", "");
+            PreferencesHelper.SetPreference("FilterLastDateToValue", "");
+            PreferencesHelper.SetPreference("FilterLastSectionTypeIDValue", "0");
+            PreferencesHelper.SetPreference("FilterLastPipeDiameterTypeIDValue", "0");
+            PreferencesHelper.SetPreference("FilterLastCustomerIDValue", "0");
+            PreferencesHelper.SetPreference("FilterLastCustomerContactIDValue", "0");
+            PreferencesHelper.SetPreference("FilterLastCompanyIDValue", "0");
         }
 
         private void GetMyQuotations()
@@ -305,62 +324,45 @@ namespace Cotizaciones.Views
         {
             this.Cursor = Cursors.WaitCursor;
 
-            //Saving new filters
-            bool saveSettingsFlag = false;
-            if (Properties.Settings.Default.FilterLastUserValue != this.cmbCreator.Value.ToString())
+            if (PreferencesHelper.GetPreference("FilterLastUserValue") != this.cmbCreator.Value.ToString())
             {
-                Properties.Settings.Default.FilterLastUserValue = this.cmbCreator.Value.ToString();
-                saveSettingsFlag = true;
+                PreferencesHelper.SetPreference("FilterLastUserValue", this.cmbCreator.Value.ToString());
             }
-            if (Properties.Settings.Default.FilterLastQuotationIDValue != (this.uneQuotationID.Value == DBNull.Value ? 0 : Convert.ToInt32(this.uneQuotationID.Value)))
+            if (Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastQuotationIDValue")) != (this.uneQuotationID.Value == DBNull.Value ? 0 : Convert.ToInt32(this.uneQuotationID.Value)))
             {
-                Properties.Settings.Default.FilterLastQuotationIDValue = (this.uneQuotationID.Value == DBNull.Value ? 0 : Convert.ToInt32(this.uneQuotationID.Value));
-                saveSettingsFlag = true;
+                PreferencesHelper.SetPreference("FilterLastQuotationIDValue", (this.uneQuotationID.Value == DBNull.Value ? 0 : Convert.ToInt32(this.uneQuotationID.Value)).ToString());
             }
-            if (Properties.Settings.Default.FilterLastQuotationStatusTypeID != Convert.ToInt32(this.cmbQuotationStatusType.Value))
+            if (Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastQuotationStatusTypeID")) != Convert.ToInt32(this.cmbQuotationStatusType.Value))
             {
-                Properties.Settings.Default.FilterLastQuotationStatusTypeID = Convert.ToInt32(this.cmbQuotationStatusType.Value);
-                saveSettingsFlag = true;
+                PreferencesHelper.SetPreference("FilterLastQuotationStatusTypeID", Convert.ToInt32(this.cmbQuotationStatusType.Value).ToString());
             }
-            if (Properties.Settings.Default.FilterLastDateFromValue != (this.dtDateFrom.Value == null ? "" : Convert.ToDateTime(this.dtDateFrom.Value).ToString("yyyyMMdd")))
+            if (PreferencesHelper.GetPreference("FilterLastDateFromValue") != (this.dtDateFrom.Value == null ? "" : Convert.ToDateTime(this.dtDateFrom.Value).ToString("yyyyMMdd")))
             {
-                Properties.Settings.Default.FilterLastDateFromValue = this.dtDateFrom.Value == null ? "" : Convert.ToDateTime(this.dtDateFrom.Value).ToString("yyyyMMdd");
-                saveSettingsFlag = true;
+                PreferencesHelper.SetPreference("FilterLastDateFromValue", this.dtDateFrom.Value == null ? "" : Convert.ToDateTime(this.dtDateFrom.Value).ToString("yyyyMMdd"));
             }
-            if (Properties.Settings.Default.FilterLastDateToValue != (this.dtDateTo.Value == null ? "" : Convert.ToDateTime(this.dtDateTo.Value).ToString("yyyyMMdd")))
+            if (PreferencesHelper.GetPreference("FilterLastDateToValue") != (this.dtDateTo.Value == null ? "" : Convert.ToDateTime(this.dtDateTo.Value).ToString("yyyyMMdd")))
             {
-                Properties.Settings.Default.FilterLastDateToValue = this.dtDateTo.Value == null ? "" : Convert.ToDateTime(this.dtDateTo.Value).ToString("yyyyMMdd");
-                saveSettingsFlag = true;
+                PreferencesHelper.SetPreference("FilterLastDateToValue", this.dtDateTo.Value == null ? "" : Convert.ToDateTime(this.dtDateTo.Value).ToString("yyyyMMdd"));
             }
-            if (Properties.Settings.Default.FilterLastSectionTypeIDValue != Convert.ToInt32(this.cmbSectionType.Value))
+            if (Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastSectionTypeIDValue")) != Convert.ToInt32(this.cmbSectionType.Value))
             {
-                Properties.Settings.Default.FilterLastSectionTypeIDValue = Convert.ToInt32(this.cmbSectionType.Value);
-                saveSettingsFlag = true;
+                PreferencesHelper.SetPreference("FilterLastSectionTypeIDValue", Convert.ToInt32(this.cmbSectionType.Value).ToString());
             }
-            if (Properties.Settings.Default.FilterLastPipeDiameterTypeIDValue != Convert.ToInt32(this.cmbDiameterType.Value))
+            if (Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastPipeDiameterTypeIDValue")) != Convert.ToInt32(this.cmbDiameterType.Value))
             {
-                Properties.Settings.Default.FilterLastPipeDiameterTypeIDValue = Convert.ToInt32(this.cmbDiameterType.Value);
-                saveSettingsFlag = true;
+                PreferencesHelper.SetPreference("FilterLastPipeDiameterTypeIDValue", Convert.ToInt32(this.cmbDiameterType.Value).ToString());
             }
-            if (Properties.Settings.Default.FilterLastCustomerIDValue != Convert.ToInt32(this.cmbCustomer.Value))
+            if (Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastCustomerIDValue")) != Convert.ToInt32(this.cmbCustomer.Value))
             {
-                Properties.Settings.Default.FilterLastCustomerIDValue = Convert.ToInt32(this.cmbCustomer.Value);
-                saveSettingsFlag = true;
+                PreferencesHelper.SetPreference("FilterLastCustomerIDValue", Convert.ToInt32(this.cmbCustomer.Value).ToString());
             }
-            if (Properties.Settings.Default.FilterLastCustomerContactIDValue != Convert.ToInt32(this.cmbCustomerContact.Value))
+            if (Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastCustomerContactIDValue")) != Convert.ToInt32(this.cmbCustomerContact.Value))
             {
-                Properties.Settings.Default.FilterLastCustomerContactIDValue = Convert.ToInt32(this.cmbCustomerContact.Value);
-                saveSettingsFlag = true;
+                PreferencesHelper.SetPreference("FilterLastCustomerContactIDValue", Convert.ToInt32(this.cmbCustomerContact.Value).ToString());
             }
-            if (Properties.Settings.Default.FilterLastCompanyIDValue != Convert.ToInt32(this.cmbCompany.Value))
+            if (Convert.ToInt32(PreferencesHelper.GetPreference("FilterLastCompanyIDValue")) != Convert.ToInt32(this.cmbCompany.Value))
             {
-                Properties.Settings.Default.FilterLastCompanyIDValue = Convert.ToInt32(this.cmbCompany.Value);
-                saveSettingsFlag = true;
-            }
-
-            if (saveSettingsFlag)
-            {
-                Properties.Settings.Default.Save();
+                PreferencesHelper.SetPreference("FilterLastCompanyIDValue", Convert.ToInt32(this.cmbCompany.Value).ToString());
             }
 
             GetMyQuotations();
