@@ -26,30 +26,6 @@ namespace Cotizaciones.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DefaultUser {
-            get {
-                return ((string)(this["DefaultUser"]));
-            }
-            set {
-                this["DefaultUser"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ExceptionsLog.log")]
-        public string LogFile {
-            get {
-                return ((string)(this["LogFile"]));
-            }
-            set {
-                this["LogFile"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string FilterLastUserValue {
             get {
                 return ((string)(this["FilterLastUserValue"]));

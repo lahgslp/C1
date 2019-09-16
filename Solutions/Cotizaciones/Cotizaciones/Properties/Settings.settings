@@ -2,12 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Cotizaciones.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DefaultUser" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="LogFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ExceptionsLog.log</Value>
-    </Setting>
     <Setting Name="FilterLastUserValue" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
