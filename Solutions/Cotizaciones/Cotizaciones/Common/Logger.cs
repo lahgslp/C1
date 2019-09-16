@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using Cotizaciones.Common;
+
 namespace Cotizaciones.Common
 {
     public class Logger
@@ -10,7 +12,7 @@ namespace Cotizaciones.Common
         {
             StreamWriter SW;
             string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            SW = File.AppendText(path + "\\" + Properties.Settings.Default.LogFile);
+            SW = File.AppendText(path + "\\" + ConfigurationHelper.GetConfigurationValue("LogFile"));
             SW.WriteLine("--------------------------------------------------");
             SW.WriteLine(DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString());
             SW.WriteLine(e.Message);
