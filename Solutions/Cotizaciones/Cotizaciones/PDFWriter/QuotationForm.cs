@@ -709,13 +709,17 @@ namespace Cotizaciones.PDFWriter
                 //Define teh columns
                 Column col = table.AddColumn("18.7cm");
 
-                Row row = table.AddRow();
-                row.Format.Alignment = ParagraphAlignment.Left;
-                row.Shading.Color = Colors.LightBlue;
-                row.Cells[0].AddParagraph("Observaciones:" + Environment.NewLine +  QuotationData.Rows[0]["Notes"].ToString());
-                row.Cells[0].Format.Font.Bold = true;
-                row.Cells[0].Format.Font.Italic = true;
-                row.Cells[0].Format.Font.Size = 8;
+                string[] fullNotesText = ("Observaciones:" + Environment.NewLine + QuotationData.Rows[0]["Notes"].ToString()).Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+                foreach (string notesparagraph in fullNotesText)
+                {
+                    Row row = table.AddRow();
+                    row.Format.Alignment = ParagraphAlignment.Left;
+                    row.Shading.Color = Colors.LightBlue;
+                    row.Cells[0].AddParagraph(notesparagraph);
+                    row.Cells[0].Format.Font.Bold = true;
+                    row.Cells[0].Format.Font.Italic = true;
+                    row.Cells[0].Format.Font.Size = 8;
+                }
                 
                 Paragraph paragraphNotes = section.AddParagraph();
                 paragraphNotes.AddLineBreak();

@@ -177,7 +177,7 @@
             this.txtFootNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFootNotes.Location = new System.Drawing.Point(112, 209);
-            this.txtFootNotes.MaxLength = 1024;
+            this.txtFootNotes.MaxLength = 8000;
             this.txtFootNotes.Multiline = true;
             this.txtFootNotes.Name = "txtFootNotes";
             this.txtFootNotes.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
@@ -451,7 +451,7 @@
             this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNotes.Location = new System.Drawing.Point(112, 21);
-            this.txtNotes.MaxLength = 1024;
+            this.txtNotes.MaxLength = 8000;
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
