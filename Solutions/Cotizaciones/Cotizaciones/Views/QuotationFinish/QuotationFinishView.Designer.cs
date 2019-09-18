@@ -158,7 +158,6 @@
             // btnExportCSV
             // 
             this.btnExportCSV.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnExportCSV.Enabled = false;
             this.btnExportCSV.Location = new System.Drawing.Point(728, 361);
             this.btnExportCSV.Name = "btnExportCSV";
             this.btnExportCSV.Size = new System.Drawing.Size(150, 23);

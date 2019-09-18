@@ -263,7 +263,85 @@ namespace Cotizaciones.Views
 
         private void btnExportCSV_Click(object sender, EventArgs e)
         {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "CSV Files(*.csv)|*.csv";
+            dialog.FileName = "Cotizacion" + QuotationID.ToString("000000") + ".csv";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                CreateCSV(dialog.FileName);
+            }
+        }
+        private void CreateCSV(string fileName)
+        {
+            StringBuilder csv = new StringBuilder();
+            csv.AppendLine("Sección,Descripción,Diámetro Nominal(Pulgadas),Diámetro Exterior(Pulgadas),Espesor de Pared(Pulgadas),Cantidad Requerida,Unidad,Peso Total(Kgs),Peso Lineal(Kg/m),Precio,Moneda,Total Partida,Condiciones de Entrega,Tiempo de Entrega");
 
+            DataSet data = QuotationCreationManager.GetQuotationData(QuotationID);
+            foreach(DataRow sectionRow in data.Tables["Table1"].Rows)
+            {
+                StringBuilder csvSection = new StringBuilder();
+                csvSection.Append(FormatForCSV(sectionRow["ShortName"].ToString()));
+                csvSection.Append(",");
+                csvSection.Append(FormatForCSV(sectionRow["Description"].ToString()));
+                csvSection.Append(",");
+
+                DataRow[] detailRows = sectionRow.GetChildRows(data.Relations["QSQSD"]);
+                foreach (DataRow detailRow in detailRows)
+                {
+                    StringBuilder csvDetail = new StringBuilder();
+                    csvDetail.Append(csvSection.ToString());
+                    csvDetail.Append(detailRow["ShortName"].ToString());
+                    csvDetail.Append(",");
+                    csvDetail.Append(detailRow["ExternalDiameterInches"].ToString());
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["Description"].ToString()));
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["Quantity"].ToString()));
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["QuantityUnit"].ToString()));
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["Weight"].ToString()));
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["LinearWeight"].ToString()));
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["Price"].ToString()));
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["CurrencyDescription"].ToString()));
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["TotalPerConcept"].ToString()));
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["DeliveryDescription"].ToString()));
+                    csvDetail.Append(",");
+                    csvDetail.Append(FormatForCSV(detailRow["DeliveryTimeDescription"].ToString()));
+                    csv.AppendLine(csvDetail.ToString());
+                }
+            }
+            try
+            {
+                File.WriteAllText(fileName, csv.ToString(), Encoding.UTF8);
+            }
+            catch (IOException exc)
+            {
+                MessageBox.Show("El archivo \"" + fileName + "\" se encuentra abierto por otro proceso, favor de cerrar y reintentar");
+            }
+        }
+
+        private string FormatForCSV(string inputText)
+        {
+            string outputText = inputText;
+            if (inputText.Contains("\""))
+            {
+                outputText = outputText.Replace("\"", "\"\"");
+            }
+            if (inputText.Contains(Environment.NewLine))
+            {
+                outputText = outputText.Replace(Environment.NewLine, "");
+            }
+            if (inputText.Contains(","))
+            {
+                outputText = "\"" + outputText + "\"";
+            }
+            return outputText;
         }
     }
 }
