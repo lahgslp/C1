@@ -720,48 +720,41 @@ namespace Cotizaciones.PDFWriter
                     row.Cells[0].Format.Font.Italic = true;
                     row.Cells[0].Format.Font.Size = 8;
                 }
-                
-                Paragraph paragraphNotes = section.AddParagraph();
-                paragraphNotes.AddLineBreak();
-                paragraphNotes.AddLineBreak();
             }
 
-            if (QuotationData.Rows[0]["PaymentDescription"] != null && QuotationData.Rows[0]["PaymentDescription"].ToString().Trim() != String.Empty)
-            {
-                Paragraph paragraphPD = section.AddParagraph();
-                paragraphPD.Format.Font.Size = 8;
-                paragraphPD.Format.Font.Bold = true;
-                paragraphPD.AddLineBreak();
-                paragraphPD.AddText("Forma de pago: ");
-                paragraphPD.AddTab();
-                paragraphPD.AddTab();
-                paragraphPD.AddText(QuotationData.Rows[0]["PaymentDescription"].ToString());
-                paragraphPD.AddLineBreak();
-            }
+            bool showPaymentCondition = QuotationData.Rows[0]["PaymentDescription"] != null && QuotationData.Rows[0]["PaymentDescription"].ToString().Trim() != String.Empty;
+            bool showValidityCondition = QuotationData.Rows[0]["ValidPeriodDescription"] != null && QuotationData.Rows[0]["ValidPeriodDescription"].ToString().Trim() != String.Empty;
+            bool showInvoicingCondition = QuotationData.Rows[0]["InvoiceMethodDescription"] != null && QuotationData.Rows[0]["InvoiceMethodDescription"].ToString().Trim() != String.Empty;
 
-            if (QuotationData.Rows[0]["ValidPeriodDescription"] != null && QuotationData.Rows[0]["ValidPeriodDescription"].ToString().Trim() != String.Empty)
+            if (showPaymentCondition || showValidityCondition || showInvoicingCondition)
             {
-                Paragraph paragraphVPD = section.AddParagraph();
-                paragraphVPD.Format.Font.Size = 8;
-                paragraphVPD.Format.Font.Bold = true;
-                paragraphVPD.AddLineBreak();
-                paragraphVPD.AddText("Validez de la oferta: ");
-                paragraphVPD.AddTab();
-                paragraphVPD.AddText(QuotationData.Rows[0]["ValidPeriodDescription"].ToString());
-                paragraphVPD.AddLineBreak();
-            }
-
-            if (QuotationData.Rows[0]["InvoiceMethodDescription"] != null && QuotationData.Rows[0]["InvoiceMethodDescription"].ToString().Trim() != String.Empty)
-            {
-                Paragraph paragraphIMD = section.AddParagraph();
-                paragraphIMD.Format.Font.Size = 8;
-                paragraphIMD.Format.Font.Bold = true;
-                paragraphIMD.AddLineBreak();
-                paragraphIMD.AddText("Facturación: ");
-                paragraphIMD.AddTab();
-                paragraphIMD.AddTab();
-                paragraphIMD.AddText(QuotationData.Rows[0]["InvoiceMethodDescription"].ToString());
-                paragraphIMD.AddLineBreak();
+                Paragraph paragraphC = section.AddParagraph();
+                paragraphC.Format.Font.Size = 8;
+                paragraphC.Format.Font.Bold = true;
+                paragraphC.AddLineBreak();
+                if(showPaymentCondition)
+                {
+                    paragraphC.AddText("Forma de pago: ");
+                    paragraphC.AddTab();
+                    paragraphC.AddTab();
+                    paragraphC.AddText(QuotationData.Rows[0]["PaymentDescription"].ToString());
+                    paragraphC.AddLineBreak();
+                }
+                if(showValidityCondition)
+                {
+                    paragraphC.AddText("Validez de la oferta: ");
+                    paragraphC.AddTab();
+                    paragraphC.AddText(QuotationData.Rows[0]["ValidPeriodDescription"].ToString());
+                    paragraphC.AddLineBreak();
+                }
+                if(showInvoicingCondition)
+                {
+                    paragraphC.AddText("Facturación: ");
+                    paragraphC.AddTab();
+                    paragraphC.AddTab();
+                    paragraphC.AddText(QuotationData.Rows[0]["InvoiceMethodDescription"].ToString());
+                    paragraphC.AddLineBreak();
+                }
             }
 
             Paragraph paragraphSignature = section.AddParagraph();
@@ -771,7 +764,6 @@ namespace Cotizaciones.PDFWriter
             paragraphSignature.AddLineBreak();
             paragraphSignature.AddLineBreak();
             paragraphSignature.AddText(this.Signature);
-            paragraphSignature.AddLineBreak();
             paragraphSignature.AddLineBreak();
         }
 
