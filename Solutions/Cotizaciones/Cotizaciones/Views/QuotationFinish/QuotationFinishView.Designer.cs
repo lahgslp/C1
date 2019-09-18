@@ -67,6 +67,7 @@
             this.MainPanel = new System.Windows.Forms.Panel();
             this.MainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.MainGroupBox = new System.Windows.Forms.GroupBox();
+            this.btnExportCSV = new Infragistics.Win.Misc.UltraButton();
             this.lblWarning = new System.Windows.Forms.Label();
             this.lblFootNotes = new Infragistics.Win.Misc.UltraLabel();
             this.txtFootNotes = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -131,6 +132,7 @@
             // 
             // MainGroupBox
             // 
+            this.MainGroupBox.Controls.Add(this.btnExportCSV);
             this.MainGroupBox.Controls.Add(this.lblWarning);
             this.MainGroupBox.Controls.Add(this.lblFootNotes);
             this.MainGroupBox.Controls.Add(this.txtFootNotes);
@@ -153,6 +155,17 @@
             this.MainGroupBox.TabStop = false;
             this.MainGroupBox.Text = "Finalización de Cotización";
             // 
+            // btnExportCSV
+            // 
+            this.btnExportCSV.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnExportCSV.Enabled = false;
+            this.btnExportCSV.Location = new System.Drawing.Point(728, 361);
+            this.btnExportCSV.Name = "btnExportCSV";
+            this.btnExportCSV.Size = new System.Drawing.Size(150, 23);
+            this.btnExportCSV.TabIndex = 15;
+            this.btnExportCSV.Text = "&Generar CSV";
+            this.btnExportCSV.Click += new System.EventHandler(this.btnExportCSV_Click);
+            // 
             // lblWarning
             // 
             this.lblWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -166,7 +179,7 @@
             // 
             // lblFootNotes
             // 
-            this.lblFootNotes.Location = new System.Drawing.Point(6, 209);
+            this.lblFootNotes.Location = new System.Drawing.Point(6, 178);
             this.lblFootNotes.Name = "lblFootNotes";
             this.lblFootNotes.Size = new System.Drawing.Size(100, 23);
             this.lblFootNotes.TabIndex = 13;
@@ -176,7 +189,7 @@
             // 
             this.txtFootNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFootNotes.Location = new System.Drawing.Point(112, 209);
+            this.txtFootNotes.Location = new System.Drawing.Point(112, 178);
             this.txtFootNotes.MaxLength = 8000;
             this.txtFootNotes.Multiline = true;
             this.txtFootNotes.Name = "txtFootNotes";
@@ -186,7 +199,7 @@
             // 
             // ultraLabel4
             // 
-            this.ultraLabel4.Location = new System.Drawing.Point(6, 334);
+            this.ultraLabel4.Location = new System.Drawing.Point(6, 303);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel4.TabIndex = 11;
@@ -252,7 +265,7 @@
             this.cmbInvoiceMethodType.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.cmbInvoiceMethodType.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.cmbInvoiceMethodType.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Default;
-            this.cmbInvoiceMethodType.Location = new System.Drawing.Point(112, 335);
+            this.cmbInvoiceMethodType.Location = new System.Drawing.Point(112, 304);
             this.cmbInvoiceMethodType.Name = "cmbInvoiceMethodType";
             this.cmbInvoiceMethodType.Size = new System.Drawing.Size(1489, 22);
             this.cmbInvoiceMethodType.TabIndex = 4;
@@ -260,7 +273,7 @@
             // 
             // ultraLabel3
             // 
-            this.ultraLabel3.Location = new System.Drawing.Point(6, 306);
+            this.ultraLabel3.Location = new System.Drawing.Point(6, 275);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel3.TabIndex = 9;
@@ -326,7 +339,7 @@
             this.cmbPaymentType.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.cmbPaymentType.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.cmbPaymentType.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Default;
-            this.cmbPaymentType.Location = new System.Drawing.Point(112, 279);
+            this.cmbPaymentType.Location = new System.Drawing.Point(112, 248);
             this.cmbPaymentType.Name = "cmbPaymentType";
             this.cmbPaymentType.Size = new System.Drawing.Size(1489, 22);
             this.cmbPaymentType.TabIndex = 2;
@@ -334,7 +347,7 @@
             // 
             // ultraLabel2
             // 
-            this.ultraLabel2.Location = new System.Drawing.Point(6, 278);
+            this.ultraLabel2.Location = new System.Drawing.Point(6, 247);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel2.TabIndex = 7;
@@ -400,7 +413,7 @@
             this.cmbValidPeriodType.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.cmbValidPeriodType.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.cmbValidPeriodType.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Default;
-            this.cmbValidPeriodType.Location = new System.Drawing.Point(112, 307);
+            this.cmbValidPeriodType.Location = new System.Drawing.Point(112, 276);
             this.cmbValidPeriodType.Name = "cmbValidPeriodType";
             this.cmbValidPeriodType.Size = new System.Drawing.Size(1489, 22);
             this.cmbValidPeriodType.TabIndex = 3;
@@ -410,7 +423,7 @@
             // 
             this.btnFinalize.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnFinalize.Enabled = false;
-            this.btnFinalize.Location = new System.Drawing.Point(728, 392);
+            this.btnFinalize.Location = new System.Drawing.Point(728, 390);
             this.btnFinalize.Name = "btnFinalize";
             this.btnFinalize.Size = new System.Drawing.Size(150, 23);
             this.btnFinalize.TabIndex = 6;
@@ -421,7 +434,7 @@
             // 
             this.btnFinalizeAndSend.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnFinalizeAndSend.Enabled = false;
-            this.btnFinalizeAndSend.Location = new System.Drawing.Point(728, 421);
+            this.btnFinalizeAndSend.Location = new System.Drawing.Point(728, 419);
             this.btnFinalizeAndSend.Name = "btnFinalizeAndSend";
             this.btnFinalizeAndSend.Size = new System.Drawing.Size(150, 23);
             this.btnFinalizeAndSend.TabIndex = 7;
@@ -431,7 +444,7 @@
             // btnPreliminaryView
             // 
             this.btnPreliminaryView.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnPreliminaryView.Location = new System.Drawing.Point(728, 363);
+            this.btnPreliminaryView.Location = new System.Drawing.Point(728, 332);
             this.btnPreliminaryView.Name = "btnPreliminaryView";
             this.btnPreliminaryView.Size = new System.Drawing.Size(150, 23);
             this.btnPreliminaryView.TabIndex = 5;
@@ -455,7 +468,7 @@
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtNotes.Size = new System.Drawing.Size(1489, 182);
+            this.txtNotes.Size = new System.Drawing.Size(1489, 151);
             this.txtNotes.TabIndex = 0;
             // 
             // btnCloseAndSend
@@ -544,5 +557,6 @@
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtFootNotes;
         private System.Windows.Forms.Label lblWarning;
         private Infragistics.Win.Misc.UltraButton btnCloseAndSend;
+        private Infragistics.Win.Misc.UltraButton btnExportCSV;
     }
 }

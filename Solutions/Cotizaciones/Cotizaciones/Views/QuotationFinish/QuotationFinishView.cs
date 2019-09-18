@@ -260,5 +260,10 @@ namespace Cotizaciones.Views
                 this.Cursor = Cursors.Default;
             }
         }
+
+        private void btnExportCSV_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
