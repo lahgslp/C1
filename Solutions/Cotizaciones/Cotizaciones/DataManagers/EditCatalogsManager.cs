@@ -43,9 +43,16 @@ namespace Cotizaciones.DataManagers
             string[] splitted = dts.Split(separators, StringSplitOptions.None);
             foreach (var s in splitted)
             {
-                DeliveryType dt = new DeliveryType();
-                dt.Description = s;
-                dt.Save();
+                if (s != "")
+                {
+                    DeliveryType dt = new DeliveryType();
+                    dt.ShortName = "";
+                    dt.Description = s;
+                    dt.Active = "A";
+                    dt.Creator = "admin";
+                    dt.Created = DateTime.Now;
+                    dt.Save();
+                }
             }
         }
         public void UpdateDeliveryTimeTypes(string dts)
@@ -60,9 +67,17 @@ namespace Cotizaciones.DataManagers
             string[] splitted = dts.Split(separators, StringSplitOptions.None);
             foreach (var s in splitted)
             {
-                DeliveryTimeType dt = new DeliveryTimeType();
-                dt.Description = s;
-                dt.Save();
+                if (s != "")
+                {
+                    DeliveryTimeType dt = new DeliveryTimeType();
+                    dt.Description = s;
+                    dt.ShortName = "";
+                    dt.Description = s;
+                    dt.Active = "A";
+                    dt.Creator = "admin";
+                    dt.Created = DateTime.Now;
+                    dt.Save();
+                }
             }
         }
     }

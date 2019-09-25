@@ -1,6 +1,26 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 using System;
 using System.Data;
 using System.Linq;
@@ -121,28 +141,51 @@ namespace Cotizaciones.DataModel
             return null;
         }
 			
-        public Query<PipeDiameterType> PipeDiameterTypes { get; set; }
-        public Query<PipeSpecification> PipeSpecifications { get; set; }
-        public Query<QuotationStatusType> QuotationStatusTypes { get; set; }
-        public Query<SectionType> SectionTypes { get; set; }
+
         public Query<UnitType> UnitTypes { get; set; }
+
         public Query<User> Users { get; set; }
-        public Query<UserCompanyPreference> UserCompanyPreferences { get; set; }
-        public Query<ValidPeriodType> ValidPeriodTypes { get; set; }
-        public Query<UserPreference> UserPreferences { get; set; }
-        public Query<DeliveryTimeType> DeliveryTimeTypes { get; set; }
+
         public Query<InvoiceMethodType> InvoiceMethodTypes { get; set; }
+
+        public Query<ValidPeriodType> ValidPeriodTypes { get; set; }
+
         public Query<Customer> Customers { get; set; }
-        public Query<QuotationSection> QuotationSections { get; set; }
-        public Query<Quotation> Quotations { get; set; }
-        public Query<CustomerContact> CustomerContacts { get; set; }
+
         public Query<Company> Companies { get; set; }
-        public Query<QuotationAttachment> QuotationAttachments { get; set; }
+
         public Query<ConfigurationKey> ConfigurationKeys { get; set; }
-        public Query<QuotationSectionDetail> QuotationSectionDetails { get; set; }
+
         public Query<CurrencyType> CurrencyTypes { get; set; }
-        public Query<DeliveryType> DeliveryTypes { get; set; }
+
         public Query<PaymentType> PaymentTypes { get; set; }
+
+        public Query<PipeSpecification> PipeSpecifications { get; set; }
+
+        public Query<Quotation> Quotations { get; set; }
+
+        public Query<QuotationSection> QuotationSections { get; set; }
+
+        public Query<QuotationSectionDetail> QuotationSectionDetails { get; set; }
+
+        public Query<UserPreference> UserPreferences { get; set; }
+
+        public Query<UserCompanyPreference> UserCompanyPreferences { get; set; }
+
+        public Query<CustomerContact> CustomerContacts { get; set; }
+
+        public Query<QuotationAttachment> QuotationAttachments { get; set; }
+
+        public Query<DeliveryTimeType> DeliveryTimeTypes { get; set; }
+
+        public Query<DeliveryType> DeliveryTypes { get; set; }
+
+        public Query<PipeDiameterType> PipeDiameterTypes { get; set; }
+
+        public Query<QuotationStatusType> QuotationStatusTypes { get; set; }
+
+        public Query<SectionType> SectionTypes { get; set; }
+
 
 			
 
@@ -245,57 +288,127 @@ namespace Cotizaciones.DataModel
         {
             provider = new DbQueryProvider(this.Provider);
 
+
             #region ' Query Defs '
-            PipeDiameterTypes = new Query<PipeDiameterType>(provider);
-            PipeSpecifications = new Query<PipeSpecification>(provider);
-            QuotationStatusTypes = new Query<QuotationStatusType>(provider);
-            SectionTypes = new Query<SectionType>(provider);
+
             UnitTypes = new Query<UnitType>(provider);
+
+
             Users = new Query<User>(provider);
-            UserCompanyPreferences = new Query<UserCompanyPreference>(provider);
-            ValidPeriodTypes = new Query<ValidPeriodType>(provider);
-            UserPreferences = new Query<UserPreference>(provider);
-            DeliveryTimeTypes = new Query<DeliveryTimeType>(provider);
+
+
             InvoiceMethodTypes = new Query<InvoiceMethodType>(provider);
+
+
+            ValidPeriodTypes = new Query<ValidPeriodType>(provider);
+
+
             Customers = new Query<Customer>(provider);
-            QuotationSections = new Query<QuotationSection>(provider);
-            Quotations = new Query<Quotation>(provider);
-            CustomerContacts = new Query<CustomerContact>(provider);
+
+
             Companies = new Query<Company>(provider);
-            QuotationAttachments = new Query<QuotationAttachment>(provider);
+
+
             ConfigurationKeys = new Query<ConfigurationKey>(provider);
-            QuotationSectionDetails = new Query<QuotationSectionDetail>(provider);
+
+
             CurrencyTypes = new Query<CurrencyType>(provider);
-            DeliveryTypes = new Query<DeliveryType>(provider);
+
+
             PaymentTypes = new Query<PaymentType>(provider);
+
+
+            PipeSpecifications = new Query<PipeSpecification>(provider);
+
+
+            Quotations = new Query<Quotation>(provider);
+
+
+            QuotationSections = new Query<QuotationSection>(provider);
+
+
+            QuotationSectionDetails = new Query<QuotationSectionDetail>(provider);
+
+
+            UserPreferences = new Query<UserPreference>(provider);
+
+
+            UserCompanyPreferences = new Query<UserCompanyPreference>(provider);
+
+
+            CustomerContacts = new Query<CustomerContact>(provider);
+
+
+            QuotationAttachments = new Query<QuotationAttachment>(provider);
+
+
+            DeliveryTimeTypes = new Query<DeliveryTimeType>(provider);
+
+
+            DeliveryTypes = new Query<DeliveryType>(provider);
+
+
+            PipeDiameterTypes = new Query<PipeDiameterType>(provider);
+
+
+            QuotationStatusTypes = new Query<QuotationStatusType>(provider);
+
+
+            SectionTypes = new Query<SectionType>(provider);
+
+
             #endregion
+
 
 
             #region ' Schemas '
         	if(DataProvider.Schema.Tables.Count == 0)
 			{
-            	DataProvider.Schema.Tables.Add(new PipeDiameterTypeTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new PipeSpecificationTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new QuotationStatusTypeTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new SectionTypeTable(DataProvider));
+
             	DataProvider.Schema.Tables.Add(new UnitTypeTable(DataProvider));
+
             	DataProvider.Schema.Tables.Add(new UserTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserCompanyPreferencesTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new ValidPeriodTypeTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserPreferencesTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new DeliveryTimeTypeTable(DataProvider));
+
             	DataProvider.Schema.Tables.Add(new InvoiceMethodTypeTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new ValidPeriodTypeTable(DataProvider));
+
             	DataProvider.Schema.Tables.Add(new CustomerTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new QuotationSectionTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new QuotationTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new CustomerContactTable(DataProvider));
+
             	DataProvider.Schema.Tables.Add(new CompanyTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new QuotationAttachmentTable(DataProvider));
+
             	DataProvider.Schema.Tables.Add(new ConfigurationKeyTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new QuotationSectionDetailTable(DataProvider));
+
             	DataProvider.Schema.Tables.Add(new CurrencyTypeTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new DeliveryTypeTable(DataProvider));
+
             	DataProvider.Schema.Tables.Add(new PaymentTypeTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new PipeSpecificationTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new QuotationTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new QuotationSectionTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new QuotationSectionDetailTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new UserPreferencesTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new UserCompanyPreferencesTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new CustomerContactTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new QuotationAttachmentTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new DeliveryTimeTypeTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new DeliveryTypeTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new PipeDiameterTypeTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new QuotationStatusTypeTable(DataProvider));
+
+            	DataProvider.Schema.Tables.Add(new SectionTypeTable(DataProvider));
+
             }
             #endregion
         }
