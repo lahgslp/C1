@@ -61,6 +61,7 @@ namespace Cotizaciones
             {
                 this.administracionDeUsuariosToolStripMenuItem.Enabled = false;
                 this.administracionDeDiametrosToolStripMenuItem.Enabled = false;
+                this.adminitracionDeCatalogosToolStripMenuItem.Enabled = false;
             }
         }
 
@@ -156,6 +157,14 @@ namespace Cotizaciones
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             return assembly.GetName().Version.ToString();
+        }
+
+        private void adminitracionDeCatalogosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CatalogEditDialog dialog = new CatalogEditDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+            }
         }
     }
 }

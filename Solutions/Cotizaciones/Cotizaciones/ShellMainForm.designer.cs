@@ -49,6 +49,7 @@
             this.administracionDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionDeDiametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionDeEmpresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adminitracionDeCatalogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.ShellWorkSpace)).BeginInit();
             this.ShellWorkSpace.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -151,6 +152,7 @@
             this.preferenciasDeUsuarioToolStripMenuItem,
             this.toolStripMenuItem1,
             this.administracionDeUsuariosToolStripMenuItem,
+            this.adminitracionDeCatalogosToolStripMenuItem,
             this.administracionDeDiametrosToolStripMenuItem,
             this.administracionDeEmpresasToolStripMenuItem});
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
@@ -189,6 +191,13 @@
             this.administracionDeEmpresasToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.administracionDeEmpresasToolStripMenuItem.Text = "Administración de Empresas";
             this.administracionDeEmpresasToolStripMenuItem.Click += new System.EventHandler(this.administracionDeEmpresasToolStripMenuItem_Click);
+            // 
+            // adminitracionDeCatalogosToolStripMenuItem
+            // 
+            this.adminitracionDeCatalogosToolStripMenuItem.Name = "adminitracionDeCatalogosToolStripMenuItem";
+            this.adminitracionDeCatalogosToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.adminitracionDeCatalogosToolStripMenuItem.Text = "Administración de Catalogos";
+            this.adminitracionDeCatalogosToolStripMenuItem.Click += new System.EventHandler(this.adminitracionDeCatalogosToolStripMenuItem_Click);
             // 
             // ShellMainForm
             // 
@@ -230,6 +239,7 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administracionDeDiametrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administracionDeEmpresasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adminitracionDeCatalogosToolStripMenuItem;
     }
 }
 
