@@ -11,3 +11,9 @@ BEGIN
 	ALTER TABLE [UserPreferences] ALTER COLUMN [DefaultFootNotes] VARCHAR (MAX) NULL;
 	ALTER TABLE [UserPreferences] ALTER COLUMN [GreetingsMessage] VARCHAR (MAX) NULL;
 END
+
+BEGIN TRANSACTION
+	UPDATE Company
+	SET LogoFilePath = 'AYANTE logo.png'
+	WHERE CompanyID = 2;
+COMMIT TRANSACTION
