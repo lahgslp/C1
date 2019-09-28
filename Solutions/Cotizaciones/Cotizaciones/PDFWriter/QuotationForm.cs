@@ -103,6 +103,18 @@ namespace Cotizaciones.PDFWriter
             }
         }
 
+        public int CompanyID
+        {
+            get
+            {
+                if (quotationData != null && quotationData.Tables[0] != null && quotationData.Tables[0].Rows[0] != null)
+                {
+                    return Convert.ToInt32(quotationData.Tables[0].Rows[0]["CompanyID"]);
+                }
+                return 3;
+            }
+        }
+
         public string CompanyName
         {
             get
@@ -358,13 +370,44 @@ namespace Cotizaciones.PDFWriter
             paragraph.AddLineBreak();
         }
 
-        readonly static Color tableBorder = new Color(81, 125, 192);
-        readonly static Color tableBlue = new Color(235, 240, 249);
+        static Dictionary<string, Color> colorMap = null;
+        static Dictionary<string, Color> GetColorMap()
+        {
+            if(colorMap == null)
+            {
+                //Copany Fersum
+                colorMap = new Dictionary<string, Color>();
+                colorMap.Add("1_tableBorder", new Color(81, 125, 192));
+                colorMap.Add("1_tableFill", new Color(235, 240, 249));
+                colorMap.Add("1_notesFill", new Color(173, 216, 230));//colorMap.Add("1_notesFill", Colors.LightBlue);
+
+                //Company Ayante
+                colorMap.Add("2_tableBorder", Colors.Maroon);
+                colorMap.Add("2_tableFill", Colors.Coral);
+                colorMap.Add("2_notesFill", Colors.Coral);
+
+                //Company undefined
+                colorMap.Add("3_tableBorder", new Color(66, 66, 66));
+                colorMap.Add("3_tableFill", new Color(189, 189, 189));
+                colorMap.Add("3_notesFill", new Color(224, 224, 224));
+            }
+            return colorMap;
+        }
+        static Color GetColor(int companyId, string area)
+        {
+            Dictionary<string, Color> cm = GetColorMap();
+            string key = companyId.ToString() + "_" + area;
+            if(cm.Keys.Contains(key))
+            {
+                return cm[key];
+            }
+            return cm["3_" + area];
+        }
 
         void AddSectionTable(DataRow sectionRow, Section section)
         {
             Table table = section.AddTable();
-            table.Borders.Color = tableBorder;
+            table.Borders.Color = GetColor(this.CompanyID, "tableBorder");
             table.Borders.Width = 0.25;
             table.Borders.Left.Width = 0.5;
             table.Borders.Right.Width = 0.5;
@@ -558,7 +601,6 @@ namespace Cotizaciones.PDFWriter
             row.HeadingFormat = true;
             row.Format.Font.Bold = true;
             row.Format.Font.Size = 6;
-            //row.Shading.Color = tableBlue;
 
             foreach (ColumnDefinition col in columns)
             {
@@ -598,7 +640,7 @@ namespace Cotizaciones.PDFWriter
             row.HeadingFormat = true;
             row.Format.Font.Bold = true;
             row.Format.Font.Size = 6;
-            row.Shading.Color = tableBlue;
+            row.Shading.Color = GetColor(this.CompanyID, "tableFill");
 
             foreach (ColumnDefinition col in columns)
             {
@@ -714,7 +756,7 @@ namespace Cotizaciones.PDFWriter
                 {
                     Row row = table.AddRow();
                     row.Format.Alignment = ParagraphAlignment.Left;
-                    row.Shading.Color = Colors.LightBlue;
+                    row.Shading.Color = GetColor(this.CompanyID, "notesFill");
                     row.Cells[0].AddParagraph(notesparagraph);
                     row.Cells[0].Format.Font.Bold = true;
                     row.Cells[0].Format.Font.Italic = true;
