@@ -9,6 +9,7 @@ using System.Data;
 using Cotizaciones.DataManagers;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Cotizaciones
 {
@@ -25,6 +26,25 @@ namespace Cotizaciones
                 return (true);
             else
                 return (false);
+        }
+
+        public static List<string> ValidateEmailList(string input)
+        {
+            List<string> values = new List<string>();
+
+            char[] separators = new char[]{' ',',',';'};
+            string[] emails = input.Split(separators);
+            foreach (var email in emails)
+            {
+                if (email != "")
+                {
+                    if (!isEmail(email))
+                    {
+                        values.Add(email);
+                    }
+                }
+            }
+            return values;
         }
 
         public static bool isValidUserName(string name)

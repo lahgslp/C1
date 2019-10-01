@@ -457,11 +457,22 @@ namespace Cotizaciones.Dialogs
                     {
                         if (row["Email"].ToString() != String.Empty)
                         {
-                            if (Utilities.isEmail(row["Email"].ToString()) == false)
+                            //if (Utilities.isEmail(row["Email"].ToString()) == false)
+                            List<string> incorrectEmails = Utilities.ValidateEmailList(row["Email"].ToString());
+                            if (incorrectEmails.Count > 0)
                             {
-                                errorMessage = "El formato de correo electrónico no es válido" + Environment.NewLine;
+                                int counter = 0;
+                                string listEmails = "";
+                                foreach (var email in incorrectEmails)
+                                {
+                                    counter++;
+                                    listEmails += email + (counter < incorrectEmails.Count ? ", " : "");
+                                }
+                                errorMessage = "Formato de siguientes correos electrónicos no es válido: " + listEmails + Environment.NewLine;
                                 ContactId = Convert.ToInt32(row["CustomerContactID"].ToString());
                                 error = true;
+
+                                row["Email"] = "";
                             }
                         }
                         if (row["ContactName"].ToString().Trim() == String.Empty)

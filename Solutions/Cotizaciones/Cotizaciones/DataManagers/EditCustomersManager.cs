@@ -112,7 +112,7 @@ namespace Cotizaciones.DataManagers
             cc.SetIsLoaded(true);
             cc.CustomerContactID = Convert.ToInt32(row["CustomerContactID"].ToString());
             cc.ContactName = row["ContactName"].ToString();
-            cc.Email = row["Email"].ToString();
+            cc.Email = row["Email"].ToString().Replace(" ", "").Replace(",", ";");
             cc.Active = row["Active"].ToString();
             cc.Modified = DateTime.Now;
             cc.Modifier = User.ToString();
@@ -137,7 +137,7 @@ namespace Cotizaciones.DataManagers
             CustomerContact cc = new CustomerContact();
             cc.CustomerID = Convert.ToInt32(row["CustomerID"].ToString());
             cc.ContactName = row["ContactName"].ToString();
-            cc.Email = row["Email"].ToString();
+            cc.Email = row["Email"].ToString().Replace(" ", "").Replace(",",";");
             cc.Creator = User;
             cc.Created = DateTime.Now;
             cc.Active = row["Active"].ToString();

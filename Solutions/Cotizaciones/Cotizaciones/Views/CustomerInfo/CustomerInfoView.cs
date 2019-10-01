@@ -401,13 +401,23 @@ namespace Cotizaciones.Views
 
         private bool IsValidData()
         {
-            if(this.txtEmail.Text!= String.Empty)
+            if(this.txtEmail.Text != String.Empty)
             {
-                if (Utilities.isEmail(this.txtEmail.Text) == false)
+                //if (Utilities.isEmail(this.txtEmail.Text) == false)
+                List<string> incorrectEmails = Utilities.ValidateEmailList(this.txtEmail.Text);
+                if (incorrectEmails.Count > 0)
                 {
-                    MessageBox.Show("El formato de correo electrónico no es válido");
+                    int counter = 0;
+                    string listEmails = "";
+                    foreach (var email in incorrectEmails)
+                    {
+                        counter ++;
+                        listEmails += email + (counter < incorrectEmails.Count ? ", " : "");
+                    }
+                    MessageBox.Show("Formato de siguientes correos electrónicos no es válido: " + listEmails);
                     return false;
                 }
+                this.txtEmail.Text = this.txtEmail.Text.Replace(" ","").Replace(",",";");
             }
             return true;
         }
