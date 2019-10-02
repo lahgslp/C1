@@ -769,10 +769,24 @@ namespace Cotizaciones.PDFWriter
                     Row row = table.AddRow();
                     row.Format.Alignment = ParagraphAlignment.Left;
                     row.Shading.Color = GetColor(this.CompanyID, "notesFill");
-                    row.Cells[0].AddParagraph(notesparagraph);
+                    var rowParagraph = row.Cells[0].AddParagraph();
                     row.Cells[0].Format.Font.Bold = true;
                     row.Cells[0].Format.Font.Italic = true;
                     row.Cells[0].Format.Font.Size = 8;
+
+                    string[] separator = new string[]{"{t}"};
+                    string[] fline = notesparagraph.Split(separator, StringSplitOptions.None);
+
+                    int lineCount = 0;
+                    foreach (var xline in fline)
+                    {
+                        lineCount++;
+                        rowParagraph.AddText(xline);
+                        if (fline.Count() > 1 && lineCount < fline.Count())
+                        {
+                            rowParagraph.AddTab();
+                        }
+                    }
                 }
             }
 
