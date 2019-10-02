@@ -103,6 +103,18 @@ namespace Cotizaciones.PDFWriter
             }
         }
 
+        public string FontName
+        {
+            get
+            {
+                if (quotationData != null && quotationData.Tables[0] != null && quotationData.Tables[0].Rows[0] != null)
+                {
+                    return quotationData.Tables[0].Rows[0]["FontName"].ToString();
+                }
+                return "";
+            }
+        }
+
         public int CompanyID
         {
             get
@@ -223,7 +235,7 @@ namespace Cotizaciones.PDFWriter
             // Because all styles are derived from Normal, the next line changes the 
             // font of the whole document. Or, more exactly, it changes the font of
             // all styles and paragraphs that do not redefine the font.
-            style.Font.Name = Utilities.GetConfigurationKeyValue("FontName");
+            style.Font.Name = this.FontName;
 
             style = this.document.Styles[StyleNames.Header];
             style.ParagraphFormat.AddTabStop("16cm", TabAlignment.Right);
@@ -233,7 +245,7 @@ namespace Cotizaciones.PDFWriter
 
             // Create a new style called Table based on style Normal
             style = this.document.Styles.AddStyle("Table", "Normal");
-            style.Font.Name = Utilities.GetConfigurationKeyValue("FontName");
+            style.Font.Name = this.FontName;
             style.Font.Size = 9;
 
             // Create a new style called Reference based on style Normal
@@ -786,6 +798,10 @@ namespace Cotizaciones.PDFWriter
                 {
                     paragraphC.AddText("Validez de la oferta: ");
                     paragraphC.AddTab();
+                    if (this.CompanyID == 2)
+                    {
+                        paragraphC.AddTab();
+                    }
                     paragraphC.AddText(QuotationData.Rows[0]["ValidPeriodDescription"].ToString());
                     paragraphC.AddLineBreak();
                 }

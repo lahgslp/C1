@@ -29,6 +29,7 @@ BEGIN
 		U.CompanyCity,
 		U.LogoFilePath,
 		U.LogoSize,
+		U.FontName,
 		U.GreetingsMessage,
 		U.Signature
 		--,Q.*

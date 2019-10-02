@@ -33,3 +33,44 @@ BEGIN TRANSACTION
 	SET LogoFilePath = 'AYANTE logo.png'
 	WHERE CompanyID = 2;
 COMMIT TRANSACTION
+
+GO
+
+IF NOT EXISTS(SELECT 1 FROM sys.columns 
+          WHERE Name = N'FontName'
+          AND Object_ID = Object_ID(N'dbo.Company'))
+BEGIN
+	ALTER TABLE [dbo].[Company] ADD [FontName] varchar(50);
+END
+GO
+
+BEGIN TRANSACTION
+
+/*OPTIONS, from https://websitesetup.org/web-safe-fonts-html-css/
+Arial
+Roboto
+Times New Roman
+Times
+Courier New
+Courier
+Verdana
+Georgia**
+Palatino-
+Garamond
+Bookman
+Comic Sans MS
+Trebuchet MS**
+Arial Black
+Impact
+*/
+
+	UPDATE [dbo].[Company] SET [FontName] = 'Verdana' WHERE [CompanyID] = 1;
+	UPDATE [dbo].[Company] SET [FontName] = 'Times' WHERE [CompanyID] = 2;
+	UPDATE [dbo].[Company] SET [FontName] = 'Verdana' WHERE [CompanyID] = 3;
+
+	DELETE [dbo].[ConfigurationKey] WHERE [ConfigurationKeyID] = 1;
+
+COMMIT TRANSACTION
+GO
+
+

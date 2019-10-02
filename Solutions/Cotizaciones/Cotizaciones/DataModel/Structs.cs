@@ -1246,6 +1246,17 @@ namespace Cotizaciones.DataModel {
 	                IsForeignKey = false,
 	                MaxLength = 20
                 });
+
+
+                Columns.Add(new DatabaseColumn("FontName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.AnsiString,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 50
+                });
                     
                 
                 
@@ -1391,6 +1402,19 @@ namespace Cotizaciones.DataModel {
    			public static string LogoSizeColumn{
 			      get{
         			return "LogoSize";
+      			}
+		    }
+            
+
+            public IColumn FontName{
+                get{
+                    return this.GetColumn("FontName");
+                }
+            }
+				
+   			public static string FontNameColumn{
+			      get{
+        			return "FontName";
       			}
 		    }
             
@@ -2347,7 +2371,7 @@ namespace Cotizaciones.DataModel {
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 50
+	                MaxLength = 500
                 });
 
 
@@ -3640,7 +3664,7 @@ namespace Cotizaciones.DataModel {
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 100
+	                MaxLength = 500
                 });
 
 
@@ -3900,7 +3924,7 @@ namespace Cotizaciones.DataModel {
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 50
+	                MaxLength = 500
                 });
 
 

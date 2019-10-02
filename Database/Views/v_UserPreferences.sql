@@ -20,6 +20,7 @@ SELECT
 	, C.CompanyCity
 	, C.LogoFilePath
 	, C.LogoSize
+	, C.FontName
 	, UCP.CC
 	, UCP.Signature
 	, UCP.EmailAddress

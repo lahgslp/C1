@@ -3506,6 +3506,26 @@ namespace Cotizaciones.DataModel
         }
 
 
+        string _FontName;
+        public string FontName
+        {
+            get { return _FontName; }
+            set
+            {
+                if(_FontName!=value){
+                    _FontName=value;
+                    var col=tbl.Columns.SingleOrDefault(x=>x.Name=="FontName");
+                    if(col!=null){
+                        if(!_dirtyColumns.Any(x=>x.Name==col.Name) && _isLoaded){
+                            _dirtyColumns.Add(col);
+                        }
+                    }
+                    OnChanged();
+                }
+            }
+        }
+
+
 
 
         public DbCommand GetUpdateCommand() {
