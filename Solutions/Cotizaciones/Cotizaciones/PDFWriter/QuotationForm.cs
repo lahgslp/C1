@@ -812,10 +812,6 @@ namespace Cotizaciones.PDFWriter
                 {
                     paragraphC.AddText("Validez de la oferta: ");
                     paragraphC.AddTab();
-                    if (this.CompanyID == 2)
-                    {
-                        paragraphC.AddTab();
-                    }
                     paragraphC.AddText(QuotationData.Rows[0]["ValidPeriodDescription"].ToString());
                     paragraphC.AddLineBreak();
                 }

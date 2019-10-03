@@ -65,7 +65,7 @@ Impact
 */
 
 	UPDATE [dbo].[Company] SET [FontName] = 'Verdana' WHERE [CompanyID] = 1;
-	UPDATE [dbo].[Company] SET [FontName] = 'Times' WHERE [CompanyID] = 2;
+	UPDATE [dbo].[Company] SET [FontName] = 'Verdana' WHERE [CompanyID] = 2;
 	UPDATE [dbo].[Company] SET [FontName] = 'Verdana' WHERE [CompanyID] = 3;
 
 	DELETE [dbo].[ConfigurationKey] WHERE [ConfigurationKeyID] = 1;
@@ -76,13 +76,15 @@ GO
 
 /*
 
-1){t}Cotizacion sujeta a confirmación de disponibilidad por previa venta y aceptación por parte del productor en caso de ser fabricación
-{t}programada o entrega diferida.
+1){t}Cotizacion sujeta a confirmación de disponibilidad por previa venta y aceptación por parte del productor
+{t}en caso de ser fabricación programada o entrega diferida.
 
-2){t}En caso de recolección en nuestro Almacén, el transportista deberá comunicar el número/s de Orden de Carga otorgada por el ejecutivo
-{t}de ventas para poder ingresar a patio. Caso contrario no se permitirá el acceso.
+2){t}En caso de recolección en nuestro Almacén, el transportista deberá comunicar el número/s de Orden de
+{t}Carga otorgada por el ejecutivo de ventas para poder ingresar a patio. Caso contrario no se permitirá el
+{t}acceso.
 
-3){t}El Transporte deberá presentarse con suficientes barrotes de madera y eslingas de amarre para la segura estiba del material, caso contrario se
-{t}repercutirá el costo de cada Polín a razón de 90 MN + IVA y Eslingas 500 MN + IVA.
+3){t}El Transporte deberá presentarse con suficientes barrotes de madera y eslingas de amarre para la segura
+{t}estiba del material, caso contrario se repercutirá el costo de cada Polín a razón de 90 MN + IVA y
+{t}Eslingas 500 MN + IVA.
 
 */
