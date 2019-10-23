@@ -34,7 +34,10 @@ BEGIN
 				ELSE RTRIM((SELECT TOP 1 Description FROM CurrencyType WHERE CurrencyTypeID = 1)) END)
 			ELSE QSD.CurrencyDescription END AS CurrencyDescription,
 		QSD.Weight,
-		CASE WHEN (UT.ShortName = 'Tramos') THEN QSD.Weight
+		CASE WHEN (UT.ShortName = 'Tramos')
+				THEN QSD.Weight
+			WHEN (UT.ShortName = 'Metros' AND CurrencyDescription LIKE '%Tonelada%')
+				THEN '$ ' + CONVERT(varchar(20),CONVERT(money, CAST(REPLACE(Weight, ',','') AS NUMERIC(15,2)) / 1000.0 * Price), 1)
 			ELSE '$ ' + CONVERT(varchar(20),CONVERT(money, Price * QSD.Quantity), 1) END AS TotalPerConcept,
 		--PaymentDescription,
 		DeliveryDescription,

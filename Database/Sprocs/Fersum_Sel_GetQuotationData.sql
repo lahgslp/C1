@@ -61,7 +61,10 @@ BEGIN
 		AS Description,
 		CAST (PS.KilogramsPerMeter AS numeric(38,3)) AS LinearWeight,
 		'$ ' + CONVERT(varchar(20),CONVERT(money, Price), 1) AS Price,
-		CASE WHEN (UT.ShortName = 'Tramos') THEN QSD.Weight
+		CASE WHEN (UT.ShortName = 'Tramos')
+				THEN QSD.Weight
+			WHEN (UT.ShortName = 'Metros' AND CurrencyDescription LIKE '%Tonelada%')
+				THEN CONVERT(varchar(20),CAST(REPLACE(Weight, ',','') AS NUMERIC(15,2)) / 1000.0 * Price)
 			ELSE CONVERT(varchar(20),Price * QSD.Quantity) END AS TotalPerConcept,
 		QSD.CurrencyDescription,
 		--PaymentDescription,
