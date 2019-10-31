@@ -581,7 +581,7 @@ namespace Cotizaciones.PDFWriter
             col.Id = Count++;
             col.Header = "Total partida";
             col.Size = "2.1cm";
-            col.Format = "C0";
+            col.Format = "C2";
             col.MapsToColumn = "TotalPerConcept";
             columns.Add(col);
 

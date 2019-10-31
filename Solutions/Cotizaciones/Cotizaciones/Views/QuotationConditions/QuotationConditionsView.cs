@@ -235,6 +235,7 @@ namespace Cotizaciones.Views
                         break;
                     case "Weight":
                         col.Header.Caption = "Peso total";
+                        col.CellActivation = Activation.NoEdit;
                         break;
                     case "TotalPerConcept":                        
                         col.Header.Caption = "Total Partida";
