@@ -133,6 +133,14 @@ namespace Cotizaciones
             Microsoft.Office.Interop.Outlook.Application objOutlook = new Microsoft.Office.Interop.Outlook.Application();
             Microsoft.Office.Interop.Outlook.MailItem mail = (Microsoft.Office.Interop.Outlook.MailItem)(objOutlook.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem));
             mail.To = QuotationData.Tables["Table"].Rows[0]["EmailTo"].ToString();
+            string CreatorEmail = QuotationData.Tables["Table"].Rows[0]["CreatorEmail"].ToString();
+            foreach (Microsoft.Office.Interop.Outlook.Account account in objOutlook.Session.Accounts)
+            {
+                if (account.SmtpAddress == CreatorEmail)
+                {
+                    mail.SendUsingAccount = (Microsoft.Office.Interop.Outlook.Account)account;
+                }
+            }
             if (QuotationData.Tables["Table"].Rows[0]["EmailTo"].ToString() != String.Empty)
             {
                 mail.CC = QuotationData.Tables["Table"].Rows[0]["NotifyToEmail"].ToString();
