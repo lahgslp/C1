@@ -129,6 +129,9 @@ namespace Cotizaciones
 
         public static void CreateEmail(int QuotationID, DataSet QuotationData, bool IsDefaultAttachment, string AttachmentName)
         {
+            bool accountFound = false;
+            List<string> accountsFound = new List<string>();
+
             //Create the email
             Microsoft.Office.Interop.Outlook.Application objOutlook = new Microsoft.Office.Interop.Outlook.Application();
             Microsoft.Office.Interop.Outlook.MailItem mail = (Microsoft.Office.Interop.Outlook.MailItem)(objOutlook.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem));
@@ -136,9 +139,11 @@ namespace Cotizaciones
             string CreatorEmail = QuotationData.Tables["Table"].Rows[0]["CreatorEmail"].ToString();
             foreach (Microsoft.Office.Interop.Outlook.Account account in objOutlook.Session.Accounts)
             {
+                accountsFound.Add(account.SmtpAddress);
                 if (account.SmtpAddress == CreatorEmail)
                 {
                     mail.SendUsingAccount = (Microsoft.Office.Interop.Outlook.Account)account;
+                    accountFound = true;
                 }
             }
             if (QuotationData.Tables["Table"].Rows[0]["EmailTo"].ToString() != String.Empty)
@@ -162,9 +167,14 @@ namespace Cotizaciones
                 string destFileName = Path.GetTempPath() + qa.ExternalFileName;
                 File.Copy(sourceFileName, destFileName, true);
                 mail.Attachments.Add(destFileName, Microsoft.Office.Interop.Outlook.OlAttachmentType.olByValue, 1, qa.ExternalFileName);
-                if (Convert.ToInt32(QuotationData.Tables["Table"].Rows[0]["CompanyID"]) != 1)   //Other than Fersum, shows the message
+                if (!accountFound)//If account not found in outlook
                 {
-                    MessageBox.Show("Favor de cambiar la cuenta desde donde se envia la cotización", "Cambiar cuenta de correo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    string emails = "";
+                    if (accountsFound.Count > 0)
+                    {
+                        emails = string.Join(",", accountsFound.ToArray());
+                    }
+                    MessageBox.Show("No se encontro la cuenta " + CreatorEmail + " en Outlook, favor de validar. Cuentas existentes: " + emails, "Validar cuenta de correo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 mail.Display(false);
             }
