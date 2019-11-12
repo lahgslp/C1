@@ -14,6 +14,7 @@ using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 
 namespace Cotizaciones.Views
 {
@@ -69,6 +70,7 @@ namespace Cotizaciones.Views
                 DisableControls();
             }
             this.btnNewQuotation.Enabled = !ReadOnlyMode;
+            this.linkOldQuotations.Visible = !ReadOnlyMode;
         }
 
         private void LoadFilterValues()
@@ -515,6 +517,14 @@ namespace Cotizaciones.Views
                     }
                 }
             }
+        }
+
+        private void linkOldQuotations_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = Assembly.GetEntryAssembly().Location;
+            p.StartInfo.Arguments = "Fersum2018";
+            p.Start();
         }
     }
 }

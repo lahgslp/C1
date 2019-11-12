@@ -128,6 +128,7 @@
             this.MainPanel = new System.Windows.Forms.Panel();
             this.MainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.FiltersGruopBox = new System.Windows.Forms.GroupBox();
+            this.linkOldQuotations = new System.Windows.Forms.LinkLabel();
             this.cmbCompany = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.ultraLabel10 = new Infragistics.Win.Misc.UltraLabel();
             this.cmbQuotationStatusType = new Infragistics.Win.UltraWinGrid.UltraCombo();
@@ -187,7 +188,7 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1864, 638);
+            this.MainPanel.Size = new System.Drawing.Size(1605, 771);
             this.MainPanel.TabIndex = 0;
             // 
             // MainSplitContainer
@@ -206,12 +207,13 @@
             // MainSplitContainer.Panel2
             // 
             this.MainSplitContainer.Panel2.Controls.Add(this.BottomSplitContainer);
-            this.MainSplitContainer.Size = new System.Drawing.Size(1864, 638);
+            this.MainSplitContainer.Size = new System.Drawing.Size(1605, 771);
             this.MainSplitContainer.SplitterDistance = 136;
             this.MainSplitContainer.TabIndex = 0;
             // 
             // FiltersGruopBox
             // 
+            this.FiltersGruopBox.Controls.Add(this.linkOldQuotations);
             this.FiltersGruopBox.Controls.Add(this.cmbCompany);
             this.FiltersGruopBox.Controls.Add(this.ultraLabel10);
             this.FiltersGruopBox.Controls.Add(this.cmbQuotationStatusType);
@@ -237,10 +239,22 @@
             this.FiltersGruopBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FiltersGruopBox.Location = new System.Drawing.Point(0, 0);
             this.FiltersGruopBox.Name = "FiltersGruopBox";
-            this.FiltersGruopBox.Size = new System.Drawing.Size(1864, 136);
+            this.FiltersGruopBox.Size = new System.Drawing.Size(1605, 136);
             this.FiltersGruopBox.TabIndex = 0;
             this.FiltersGruopBox.TabStop = false;
             this.FiltersGruopBox.Text = "Filtros";
+            // 
+            // linkOldQuotations
+            // 
+            this.linkOldQuotations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkOldQuotations.AutoSize = true;
+            this.linkOldQuotations.Location = new System.Drawing.Point(1356, 112);
+            this.linkOldQuotations.Name = "linkOldQuotations";
+            this.linkOldQuotations.Size = new System.Drawing.Size(81, 13);
+            this.linkOldQuotations.TabIndex = 21;
+            this.linkOldQuotations.TabStop = true;
+            this.linkOldQuotations.Text = "Antigua Version";
+            this.linkOldQuotations.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkOldQuotations_LinkClicked);
             // 
             // cmbCompany
             // 
@@ -393,7 +407,7 @@
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(1702, 107);
+            this.btnClear.Location = new System.Drawing.Point(1443, 107);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 8;
@@ -420,7 +434,7 @@
             // btnFilter
             // 
             this.btnFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFilter.Location = new System.Drawing.Point(1783, 106);
+            this.btnFilter.Location = new System.Drawing.Point(1524, 106);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 9;
@@ -849,8 +863,8 @@
             // BottomSplitContainer.Panel2
             // 
             this.BottomSplitContainer.Panel2.Controls.Add(this.btnNewQuotation);
-            this.BottomSplitContainer.Size = new System.Drawing.Size(1864, 498);
-            this.BottomSplitContainer.SplitterDistance = 466;
+            this.BottomSplitContainer.Size = new System.Drawing.Size(1605, 631);
+            this.BottomSplitContainer.SplitterDistance = 599;
             this.BottomSplitContainer.TabIndex = 0;
             // 
             // QuotationsGroupBox
@@ -859,7 +873,7 @@
             this.QuotationsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.QuotationsGroupBox.Location = new System.Drawing.Point(0, 0);
             this.QuotationsGroupBox.Name = "QuotationsGroupBox";
-            this.QuotationsGroupBox.Size = new System.Drawing.Size(1864, 466);
+            this.QuotationsGroupBox.Size = new System.Drawing.Size(1605, 599);
             this.QuotationsGroupBox.TabIndex = 0;
             this.QuotationsGroupBox.TabStop = false;
             this.QuotationsGroupBox.Text = "Cotizaciones";
@@ -928,7 +942,7 @@
             this.ugMyQuotations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ugMyQuotations.Location = new System.Drawing.Point(3, 16);
             this.ugMyQuotations.Name = "ugMyQuotations";
-            this.ugMyQuotations.Size = new System.Drawing.Size(1858, 447);
+            this.ugMyQuotations.Size = new System.Drawing.Size(1599, 580);
             this.ugMyQuotations.TabIndex = 0;
             this.ugMyQuotations.Text = "ultraGrid1";
             this.ugMyQuotations.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ugMyQuotations_MouseDown);
@@ -937,7 +951,7 @@
             // btnNewQuotation
             // 
             this.btnNewQuotation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewQuotation.Location = new System.Drawing.Point(1752, 2);
+            this.btnNewQuotation.Location = new System.Drawing.Point(1493, 2);
             this.btnNewQuotation.Name = "btnNewQuotation";
             this.btnNewQuotation.Size = new System.Drawing.Size(109, 23);
             this.btnNewQuotation.TabIndex = 0;
@@ -951,26 +965,26 @@
             this.toolStripMenuItemClone,
             this.toolStripMenuItemEliminar});
             this.contextMenuMyQuotations.Name = "contextMenuMyQuotations";
-            this.contextMenuMyQuotations.Size = new System.Drawing.Size(192, 92);
+            this.contextMenuMyQuotations.Size = new System.Drawing.Size(191, 70);
             // 
             // marcarComoVendidaToolStripMenuItem
             // 
             this.marcarComoVendidaToolStripMenuItem.Name = "marcarComoVendidaToolStripMenuItem";
-            this.marcarComoVendidaToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.marcarComoVendidaToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.marcarComoVendidaToolStripMenuItem.Text = "Marcar como &Vendida";
             this.marcarComoVendidaToolStripMenuItem.Click += new System.EventHandler(this.marcarComoVendidaToolStripMenuItem_Click);
             // 
             // toolStripMenuItemClone
             // 
             this.toolStripMenuItemClone.Name = "toolStripMenuItemClone";
-            this.toolStripMenuItemClone.Size = new System.Drawing.Size(215, 22);
+            this.toolStripMenuItemClone.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemClone.Text = "&Clonar Cotización";
             this.toolStripMenuItemClone.Click += new System.EventHandler(this.toolStripMenuItemClone_Click);
             // 
             // toolStripMenuItemEliminar
             // 
             this.toolStripMenuItemEliminar.Name = "toolStripMenuItemEliminar";
-            this.toolStripMenuItemEliminar.Size = new System.Drawing.Size(215, 22);
+            this.toolStripMenuItemEliminar.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemEliminar.Text = "&Eliminar Cotización";
             this.toolStripMenuItemEliminar.Click += new System.EventHandler(this.toolStripMenuItemEliminar_Click);
             // 
@@ -980,7 +994,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.MainPanel);
             this.Name = "MyQuotationsView";
-            this.Size = new System.Drawing.Size(1864, 638);
+            this.Size = new System.Drawing.Size(1605, 771);
             this.Load += new System.EventHandler(this.MyQuotationsView_Load);
             this.MainPanel.ResumeLayout(false);
             this.MainSplitContainer.Panel1.ResumeLayout(false);
@@ -1043,5 +1057,6 @@
         private System.Windows.Forms.ToolStripMenuItem marcarComoVendidaToolStripMenuItem;
         private Infragistics.Win.UltraWinGrid.UltraCombo cmbCompany;
         private Infragistics.Win.Misc.UltraLabel ultraLabel10;
+        private System.Windows.Forms.LinkLabel linkOldQuotations;
     }
 }
