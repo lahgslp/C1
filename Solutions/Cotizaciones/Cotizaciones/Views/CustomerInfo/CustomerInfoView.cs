@@ -137,7 +137,7 @@ namespace Cotizaciones.Views
 
         private void UpdateQuotation()
         {
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 int companyID, customerID, contactID;
                 customerID = GetCustomerID();
@@ -160,7 +160,7 @@ namespace Cotizaciones.Views
 
         private void EnableDisableControls()
         {
-            if (IsReadOnly == true)
+            if (IsReadOnlyQuotation == true)
             {
                 this.uceCompany.ReadOnly = true;
                 this.uceCustomer.ReadOnly = true;
@@ -498,7 +498,7 @@ namespace Cotizaciones.Views
             else
             {
                 this.btnOpenFile.Enabled = true;
-                if (!IsReadOnly)
+                if (!IsReadOnlyQuotation)
                 {
                     this.btnRemoveFile.Enabled = true;
                     this.btnSendAndFinalize.Enabled = true;
@@ -539,7 +539,7 @@ namespace Cotizaciones.Views
 
         private void btnAddFile_Click(object sender, EventArgs e)
         {
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 OpenFileDialog dlg = new OpenFileDialog();
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -551,7 +551,7 @@ namespace Cotizaciones.Views
 
         private void btnRemoveFile_Click(object sender, EventArgs e)
         {
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 if (Directory.Exists(Utilities.GetConfigurationKeyValue("NetworkFolder")))
                 {
@@ -706,7 +706,7 @@ namespace Cotizaciones.Views
 
         private void btnSendAndFinalize_Click(object sender, EventArgs e)
         {
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 if (uceCustomer.Text != "")
                 {

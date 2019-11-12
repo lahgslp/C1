@@ -13,7 +13,7 @@ namespace Cotizaciones.Views
     {
         public int QuotationID { get; set; }
         public Cotizaciones.Enums.QuotationStatusType QuotationStatusTypeID { get; set; }
-        public bool IsReadOnly
+        public bool IsReadOnlyQuotation
         {
             get
             {

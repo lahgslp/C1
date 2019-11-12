@@ -40,7 +40,7 @@ namespace Cotizaciones.Views
 
         private void Save()
         {
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 QuotationFinishManager.SaveQuotationFinishDetails(this.QuotationID, this.User, this.txtNotes.Text, this.txtFootNotes.Text, this.cmbValidPeriodType.Text, this.cmbPaymentType.Text, this.cmbInvoiceMethodType.Text);
             }
@@ -64,7 +64,7 @@ namespace Cotizaciones.Views
             }
             else
             {
-                if (!IsReadOnly)
+                if (!IsReadOnlyQuotation)
                 {
                     this.cmbValidPeriodType.Value = ReferenceData.Tables["Table"].Rows[0]["Description"].ToString();
                 }
@@ -76,7 +76,7 @@ namespace Cotizaciones.Views
             }
             else
             {
-                if (!IsReadOnly)
+                if (!IsReadOnlyQuotation)
                 {
                     this.cmbPaymentType.Value = ReferenceData.Tables["Table1"].Rows[0]["Description"].ToString();
                 }
@@ -88,7 +88,7 @@ namespace Cotizaciones.Views
             }
             else
             {
-                if (!IsReadOnly)
+                if (!IsReadOnlyQuotation)
                 {
                     this.cmbInvoiceMethodType.Value = ReferenceData.Tables["Table2"].Rows[0]["Description"].ToString();
                 }
@@ -122,7 +122,7 @@ namespace Cotizaciones.Views
 
         private void EnableDisableControls()
         {
-            if (IsReadOnly == true)
+            if (IsReadOnlyQuotation == true)
             {
                 this.txtNotes.ReadOnly = true;
                 this.txtFootNotes.ReadOnly = true;
@@ -207,7 +207,7 @@ namespace Cotizaciones.Views
         {
             string FileName = SaveAndCreate();
             Process.Start(FileName);
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 if (MessageBox.Show("¿Son correctos los datos de la cotización?", "Validar datos", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                 {

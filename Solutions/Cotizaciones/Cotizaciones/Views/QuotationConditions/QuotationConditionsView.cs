@@ -85,7 +85,7 @@ namespace Cotizaciones.Views
 
         private void SaveQuotation(bool updateStatus)
         {
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 QuotationConditionsManager.SaveQuotationConditions(this.QuotationID, this.User, QuotationData, updateStatus);
             }
@@ -111,7 +111,7 @@ namespace Cotizaciones.Views
 
         private void EnableDisableControls()
         {
-            if (IsReadOnly == true)
+            if (IsReadOnlyQuotation == true)
             {
                 //this.ugQuotationConditions.Enabled = false;
 
@@ -228,7 +228,7 @@ namespace Cotizaciones.Views
                         break;
                     case "CurrencyDescription":
                         col.Header.Caption = "Moneda";
-                        if (IsReadOnly != true)
+                        if (IsReadOnlyQuotation != true)
                         {
                             col.ValueList = this.cmbCurrencyType;
                         }
@@ -248,28 +248,28 @@ namespace Cotizaciones.Views
                         break;
                     /*case "PaymentDescription":
                         col.Header.Caption = "Forma de pago";
-                        if (IsReadOnly != true)
+                        if (IsReadOnlyQuotation != true)
                         {
                             col.ValueList = this.cmbPaymentType;
                         }
                         break;*/
                     case "DeliveryDescription":
                         col.Header.Caption = "Condiciones de Entrega";
-                        if (IsReadOnly != true)
+                        if (IsReadOnlyQuotation != true)
                         {
                             col.ValueList = this.cmbDeliveryType;
                         }
                         break;
                     case "DeliveryTimeDescription":
                         col.Header.Caption = "Tiempo de Entrega";
-                        if (IsReadOnly != true)
+                        if (IsReadOnlyQuotation != true)
                         {
                             col.ValueList = this.cmbDeliveryTimeType;
                         }
                         break;
                     /*case "ValidPeriodDescription":
                         col.Header.Caption = "Validez";
-                        if (IsReadOnly != true)
+                        if (IsReadOnlyQuotation != true)
                         {
                             col.ValueList = this.cmbValidPeriodType;
                         }

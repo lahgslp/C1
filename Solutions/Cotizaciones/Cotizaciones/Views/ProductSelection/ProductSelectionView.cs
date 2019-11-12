@@ -54,7 +54,7 @@ namespace Cotizaciones.Views
 
         private void EnableDisableControls()
         {
-            if (IsReadOnly == true)
+            if (IsReadOnlyQuotation == true)
             {
                 //this.ugProducts.Enabled = false;
                 foreach (UltraGridBand band in this.ugProducts.DisplayLayout.Bands)
@@ -80,7 +80,7 @@ namespace Cotizaciones.Views
             }
             else
             {
-                if (!IsReadOnly)
+                if (!IsReadOnlyQuotation)
                 {
                     this.CreateProductRow();
                 }
@@ -188,7 +188,7 @@ namespace Cotizaciones.Views
         private bool IsValidData()
         {
             bool isValidData = true;
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 ArrayList nonUsedRows = new ArrayList();
                 string errorValue;
@@ -251,7 +251,7 @@ namespace Cotizaciones.Views
 
         private void UpdateQuotation()
         {
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 //Get the datatable to use to the QuotationProductsManager
                 DataTable inputData = CreateDataTable();
@@ -458,7 +458,7 @@ namespace Cotizaciones.Views
 
         private void toolStripMenuItemAddProduct_Click(object sender, EventArgs e)
         {
-            if (!IsReadOnly)
+            if (!IsReadOnlyQuotation)
             {
                 CreateProductRow();
             }
@@ -544,7 +544,7 @@ namespace Cotizaciones.Views
         {
             e.Layout.Bands[0].Columns["Diámetro Nominal"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDown;
             e.Layout.Bands[0].Columns["Diámetro Nominal"].CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
-            if (IsReadOnly != true)
+            if (IsReadOnlyQuotation != true)
             {
                 e.Layout.Bands[0].Columns["Diámetro Nominal"].ValueList = this.ucPipeDimeterType;
             }
@@ -552,7 +552,7 @@ namespace Cotizaciones.Views
 
             e.Layout.Bands[0].Columns["Espesor"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDown;
             e.Layout.Bands[0].Columns["Espesor"].CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
-            if (IsReadOnly != true)
+            if (IsReadOnlyQuotation != true)
             {
                 e.Layout.Bands[0].Columns["Espesor"].ValueList = this.ucPipeDimeterType;
             }
@@ -560,7 +560,7 @@ namespace Cotizaciones.Views
 
             e.Layout.Bands[0].Columns["Unidad"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDown;
             e.Layout.Bands[0].Columns["Unidad"].CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
-            if (IsReadOnly != true)
+            if (IsReadOnlyQuotation != true)
             {
                 e.Layout.Bands[0].Columns["Unidad"].ValueList = this.ucUnitType;
             }
