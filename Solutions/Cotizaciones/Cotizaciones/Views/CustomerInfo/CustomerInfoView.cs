@@ -25,8 +25,9 @@ namespace Cotizaciones.Views
         ArrayList quotationAttachments;
         Boolean exist;
 
-        public CustomerInfoView()
+        public CustomerInfoView(bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             InitializeComponent();
         }
 
@@ -38,7 +39,7 @@ namespace Cotizaciones.Views
 
                 uceCustomer.Text = "";        
                 this.Cursor = Cursors.WaitCursor;
-                MyQuotationsView myview = new MyQuotationsView();
+                MyQuotationsView myview = new MyQuotationsView(ReadOnlyMode);
                 MainController.Instance.Next(myview);
                 this.Cursor = Cursors.Default;
             }
@@ -127,7 +128,7 @@ namespace Cotizaciones.Views
             if(this.uceCustomer.Enabled == true)
                 this.UpdateQuotation();           
 
-            ProductSelectionView myview = new ProductSelectionView();
+            ProductSelectionView myview = new ProductSelectionView(ReadOnlyMode);
             myview.QuotationID = this.QuotationID;
             myview.User = this.User;
             myview.QuotationStatusTypeID = this.QuotationStatusTypeID;

@@ -43,11 +43,11 @@ namespace Cotizaciones
             this.Handler();
         }
 
-        public Control GetNextControl()
+        public Control GetNextControl(bool readOnlyMode)
         {
             if (currentControl == null)
             {
-                currentControl = new MyQuotationsView();
+                currentControl = new MyQuotationsView(readOnlyMode);
             }
             return currentControl;
         }

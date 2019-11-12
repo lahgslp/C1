@@ -19,8 +19,9 @@ namespace Cotizaciones.Views
     public partial class QuotationFinishView : BaseView
     {
         DataSet ReferenceData;
-        public QuotationFinishView()
+        public QuotationFinishView(bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             InitializeComponent();
         }
 
@@ -28,7 +29,7 @@ namespace Cotizaciones.Views
         {
             this.Cursor = Cursors.WaitCursor;
             this.Save();
-            MyQuotationsView myview = new MyQuotationsView();
+            MyQuotationsView myview = new MyQuotationsView(ReadOnlyMode);
             MainController.Instance.Next(myview);
             this.Cursor = Cursors.Default;
         }
@@ -158,7 +159,7 @@ namespace Cotizaciones.Views
         {
             this.Cursor = Cursors.WaitCursor;
             this.Save();
-            QuotationConditionsView myview = new QuotationConditionsView();
+            QuotationConditionsView myview = new QuotationConditionsView(ReadOnlyMode);
             myview.QuotationID = this.QuotationID;
             myview.User = this.User;
             myview.QuotationStatusTypeID = this.QuotationStatusTypeID;
@@ -255,7 +256,7 @@ namespace Cotizaciones.Views
             {
                 this.Cursor = Cursors.WaitCursor;
                 QuotationFinishManager.FinalizeQuotation(QuotationID, User, Cotizaciones.Enums.QuotationStatusType.FinishedAndSent);
-                MyQuotationsView myview = new MyQuotationsView();
+                MyQuotationsView myview = new MyQuotationsView(ReadOnlyMode);
                 MainController.Instance.Next(myview);
                 this.Cursor = Cursors.Default;
             }

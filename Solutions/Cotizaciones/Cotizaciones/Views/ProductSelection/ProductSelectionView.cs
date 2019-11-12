@@ -29,9 +29,10 @@ namespace Cotizaciones.Views
         DataTable dtPipeDiameter, dtPipeSpecification, dtAllSpecs, dtUnitType;
         DataTable OriginalProductInfo;
         UltraGridCell selectedCell = null;
-        
-        public ProductSelectionView()
+
+        public ProductSelectionView(bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             sections.Add("TSCB", 1);
             sections.Add("TSCX52", 2);
             sections.Add("ERW", 3);
@@ -286,7 +287,7 @@ namespace Cotizaciones.Views
                 this.Cursor = Cursors.WaitCursor;
                 this.UpdateQuotation();
 
-                MyQuotationsView myview = new MyQuotationsView();
+                MyQuotationsView myview = new MyQuotationsView(ReadOnlyMode);
                 MainController.Instance.Next(myview);
                 this.Cursor = Cursors.Default;
             }
@@ -299,7 +300,7 @@ namespace Cotizaciones.Views
                 this.Cursor = Cursors.WaitCursor;
                 this.UpdateQuotation();
 
-                QuotationConditionsView myview = new QuotationConditionsView();
+                QuotationConditionsView myview = new QuotationConditionsView(ReadOnlyMode);
                 myview.QuotationID = this.QuotationID;
                 myview.User = this.User;
                 myview.QuotationStatusTypeID = this.QuotationStatusTypeID;
@@ -606,7 +607,7 @@ namespace Cotizaciones.Views
                 this.Cursor = Cursors.WaitCursor;
                 this.UpdateQuotation();
 
-                CustomerInfoView myview = new CustomerInfoView();
+                CustomerInfoView myview = new CustomerInfoView(ReadOnlyMode);
                 myview.QuotationID = this.QuotationID;
                 myview.User = this.User;
                 myview.QuotationStatusTypeID = this.QuotationStatusTypeID;

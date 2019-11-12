@@ -11,13 +11,15 @@ namespace Cotizaciones.Views
 {
     public partial class BaseView : UserControl
     {
+        public bool ReadOnlyMode { get; set; }
         public int QuotationID { get; set; }
         public Cotizaciones.Enums.QuotationStatusType QuotationStatusTypeID { get; set; }
         public bool IsReadOnlyQuotation
         {
             get
             {
-                return this.QuotationStatusTypeID == Cotizaciones.Enums.QuotationStatusType.Finished
+                return this.ReadOnlyMode
+                    || this.QuotationStatusTypeID == Cotizaciones.Enums.QuotationStatusType.Finished
                     || this.QuotationStatusTypeID == Cotizaciones.Enums.QuotationStatusType.Sold
                     || this.QuotationStatusTypeID == Cotizaciones.Enums.QuotationStatusType.FinishedExternal
                     || this.QuotationStatusTypeID == Cotizaciones.Enums.QuotationStatusType.FinishedAndSent;
@@ -26,6 +28,7 @@ namespace Cotizaciones.Views
         public string User { get; set; }
         public BaseView()
         {
+            ReadOnlyMode = false;
             InitializeComponent();
             this.Dock = DockStyle.Fill;
         }

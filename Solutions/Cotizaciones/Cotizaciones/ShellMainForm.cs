@@ -61,7 +61,7 @@ namespace Cotizaciones
 
         private void AddView()
         {
-            current = MainController.Instance.GetNextControl();
+            current = MainController.Instance.GetNextControl(ReadOnlyMode);
             this.ultraTabPageControl1.Controls.Add(current);
         }
 

@@ -20,8 +20,9 @@ namespace Cotizaciones.Views
         string DeliveryValue;
         string DeliveryTimeValue;
 
-        public QuotationConditionsView()
+        public QuotationConditionsView(bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             InitializeComponent();
         }
 
@@ -31,7 +32,7 @@ namespace Cotizaciones.Views
             {
                 this.Cursor = Cursors.WaitCursor;
                 this.SaveQuotation(true);
-                QuotationFinishView myview = new QuotationFinishView();
+                QuotationFinishView myview = new QuotationFinishView(ReadOnlyMode);
                 myview.QuotationID = this.QuotationID;
                 myview.User = this.User;
                 myview.QuotationStatusTypeID = this.QuotationStatusTypeID;
@@ -95,7 +96,7 @@ namespace Cotizaciones.Views
         {
             this.Cursor = Cursors.WaitCursor;
             SaveQuotation(false);
-            MyQuotationsView myview = new MyQuotationsView();
+            MyQuotationsView myview = new MyQuotationsView(ReadOnlyMode);
             MainController.Instance.Next(myview);
             this.Cursor = Cursors.Default;
         }
@@ -408,7 +409,7 @@ namespace Cotizaciones.Views
         {
             this.Cursor = Cursors.WaitCursor;
             this.SaveQuotation(false);
-            ProductSelectionView myview = new ProductSelectionView();
+            ProductSelectionView myview = new ProductSelectionView(ReadOnlyMode);
             myview.QuotationID = this.QuotationID;
             myview.User = this.User;
             myview.QuotationStatusTypeID = this.QuotationStatusTypeID;

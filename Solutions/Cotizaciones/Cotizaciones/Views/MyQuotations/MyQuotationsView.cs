@@ -22,8 +22,9 @@ namespace Cotizaciones.Views
         int SelectedQuotationID = 0;
         int SelectedQuotationStatusTypeID = 0;
         DataSet ReferenceData;
-        public MyQuotationsView()
+        public MyQuotationsView(bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             InitializeComponent();
         }
 
@@ -39,7 +40,7 @@ namespace Cotizaciones.Views
         private void btnNewQuotation_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            CustomerInfoView custinfo = new CustomerInfoView();
+            CustomerInfoView custinfo = new CustomerInfoView(ReadOnlyMode);
             custinfo.QuotationID = MyQuotationsManager.CreateQuotation(this.User);
             custinfo.User = this.User;
             custinfo.QuotationStatusTypeID = (Cotizaciones.Enums.QuotationStatusType)1;
@@ -67,6 +68,7 @@ namespace Cotizaciones.Views
             {
                 DisableControls();
             }
+            this.btnNewQuotation.Enabled = !ReadOnlyMode;
         }
 
         private void LoadFilterValues()
@@ -413,7 +415,7 @@ namespace Cotizaciones.Views
 
         private void OpenQuotation(int QuotationID, Cotizaciones.Enums.QuotationStatusType quotationTypeID)
         {
-            CustomerInfoView custinfo = new CustomerInfoView();
+            CustomerInfoView custinfo = new CustomerInfoView(ReadOnlyMode);
             custinfo.QuotationID = QuotationID;
             custinfo.User = this.User;
             custinfo.QuotationStatusTypeID = quotationTypeID;
@@ -436,27 +438,30 @@ namespace Cotizaciones.Views
         {
             if (e.Button == MouseButtons.Right)
             {
-                Point mousePoint = new Point(e.X, e.Y);
-                UIElement element = ((UltraGrid)sender).DisplayLayout.UIElement.ElementFromPoint(mousePoint);
-
-                UltraGridCell cell = element.GetContext(typeof(UltraGridCell)) as UltraGridCell;
-                if (cell != null)
+                if (!ReadOnlyMode)
                 {
-                    int x, y;
-                    /*
-                    foreach (UltraGridRow row in this.ugMyQuotations.Rows)
+                    Point mousePoint = new Point(e.X, e.Y);
+                    UIElement element = ((UltraGrid)sender).DisplayLayout.UIElement.ElementFromPoint(mousePoint);
+
+                    UltraGridCell cell = element.GetContext(typeof(UltraGridCell)) as UltraGridCell;
+                    if (cell != null)
                     {
-                        row.Selected = false;
-                    }*/
-                    SelectedQuotationID = Convert.ToInt32(cell.Row.Cells["QuotationID"].Value);
-                    SelectedQuotationStatusTypeID = Convert.ToInt32(cell.Row.Cells["QuotationStatusTypeID"].Value);
+                        int x, y;
+                        /*
+                        foreach (UltraGridRow row in this.ugMyQuotations.Rows)
+                        {
+                            row.Selected = false;
+                        }*/
+                        SelectedQuotationID = Convert.ToInt32(cell.Row.Cells["QuotationID"].Value);
+                        SelectedQuotationStatusTypeID = Convert.ToInt32(cell.Row.Cells["QuotationStatusTypeID"].Value);
 
-                    cell.Row.Selected = true;
+                        cell.Row.Selected = true;
 
-                    x = this.Parent.Parent.Parent.Location.X + mousePoint.X + 10;
-                    y = this.Parent.Parent.Parent.Location.Y + mousePoint.Y + 185;
-                    Point contextMenuLocation = new Point(x, y);
-                    contextMenuMyQuotations.Show(contextMenuLocation);
+                        x = this.Parent.Parent.Parent.Location.X + mousePoint.X + 10;
+                        y = this.Parent.Parent.Parent.Location.Y + mousePoint.Y + 185;
+                        Point contextMenuLocation = new Point(x, y);
+                        contextMenuMyQuotations.Show(contextMenuLocation);
+                    }
                 }
             }
         }
