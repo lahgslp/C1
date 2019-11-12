@@ -12,8 +12,11 @@ namespace Cotizaciones.Dialogs
 {
     public partial class CatalogEditDialog : Form
     {
-        public CatalogEditDialog()
+        bool ReadOnlyMode;
+
+        public CatalogEditDialog(bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             InitializeComponent();
         }
 
@@ -40,6 +43,10 @@ namespace Cotizaciones.Dialogs
             EditCatalogsManager mgr = new EditCatalogsManager();
             this.textBoxDeliveryConditions.Text = mgr.GetDeliveryTypes();
             this.textBoxDeliveryTime.Text = mgr.GetDeliveryTimeTypes();
+
+            this.textBoxDeliveryConditions.Enabled = !ReadOnlyMode;
+            this.textBoxDeliveryTime.Enabled = !ReadOnlyMode;
+            this.btnSave.Enabled = !ReadOnlyMode;
         }
     }
 }

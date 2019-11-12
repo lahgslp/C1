@@ -16,9 +16,11 @@ namespace Cotizaciones.Dialogs
         private int UserID;
         private string User;
         private int tabCount = 0;
+        bool ReadOnlyMode;
 
-        public UserPreferencesDialog(string User)
+        public UserPreferencesDialog(string User, bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             this.User = User;
             InitializeComponent();
         }
@@ -122,6 +124,7 @@ namespace Cotizaciones.Dialogs
             LoadUserInfo();
             LoadUserPreferencesInfo();
             LoadUserCompanyPreferencesInfo();
+            this.btnOK.Enabled = !ReadOnlyMode;
         }
 
         private void LoadUserInfo()

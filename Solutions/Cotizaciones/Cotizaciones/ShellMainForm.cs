@@ -17,32 +17,15 @@ namespace Cotizaciones
     public partial class ShellMainForm : Form
     {
         Control current = null;
-        public ShellMainForm()
+        bool ReadOnlyMode;
+        public ShellMainForm(bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             InitializeComponent();
         }
 
         private void ShellMainForm_Load(object sender, EventArgs e)
         {
-            //Tests
-            /*bool test = false;
-            test = Utilities.isValidPassword("");
-            test = Utilities.isValidPassword(" ");
-            test = Utilities.isValidPassword("9909809");
-            test = Utilities.isValidPassword("uiuoid90909890");
-            test = Utilities.isValidPassword("a");
-            test = Utilities.isValidPassword("9");
-            test = Utilities.isValidPassword("somethinglikethis_.oi9");
-            test = Utilities.isValidPassword("siohj iuokl");
-            test = Utilities.isValidPassword("Ffkjhskjh#");
-            test = Utilities.isValidPassword(" lyh3iu");
-            test = Utilities.isValidPassword("lkjk88 ");
-            test = Utilities.isValidPassword("cdelapaz");
-            test = Utilities.isValidPassword(" ");
-            if (test == true)
-            {
-            }*/
-            //Tests
             LoginDialog loginDlg = new LoginDialog();
             if (loginDlg.ShowDialog() == DialogResult.Cancel)
             {
@@ -52,7 +35,12 @@ namespace Cotizaciones
             MainController.Instance.BarHandler = new MainController.StatusBarHandler(this.ChangeStatusBarMessage);
             MainController.Instance.Handler();
             EnableDisableMenuOptions();
-            this.Text = "Sistema de Cotizaciones (Versión " + GetSystemVersion() + ")";
+            string additionalMessage = "";
+            if (ReadOnlyMode)
+            {
+                additionalMessage = " - SOLO LECTURA BASE DE DATOS " + ConfigurationHelper.ConnectionString;
+            }
+            this.Text = "Sistema de Cotizaciones (Versión " + GetSystemVersion() + ")" + additionalMessage;
         }
         
         void EnableDisableMenuOptions()
@@ -119,7 +107,7 @@ namespace Cotizaciones
 
         private void preferenciasDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserPreferencesDialog dialog = new UserPreferencesDialog(PreferencesHelper.GetPreference("DefaultUser"));
+            UserPreferencesDialog dialog = new UserPreferencesDialog(PreferencesHelper.GetPreference("DefaultUser"), ReadOnlyMode);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
             }
@@ -127,7 +115,7 @@ namespace Cotizaciones
 
         private void administracionDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserManagementDialog dialog = new UserManagementDialog(PreferencesHelper.GetPreference("DefaultUser"));
+            UserManagementDialog dialog = new UserManagementDialog(PreferencesHelper.GetPreference("DefaultUser"), ReadOnlyMode);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
             }
@@ -140,7 +128,7 @@ namespace Cotizaciones
 
         private void administracionDeDiametrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditDiameterDialog dialog = new EditDiameterDialog(PreferencesHelper.GetPreference("DefaultUser"));
+            EditDiameterDialog dialog = new EditDiameterDialog(PreferencesHelper.GetPreference("DefaultUser"), ReadOnlyMode);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
             }
@@ -148,7 +136,7 @@ namespace Cotizaciones
 
         private void administracionDeEmpresasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditCustomersDialog dialog = new EditCustomersDialog(PreferencesHelper.GetPreference("DefaultUser"));
+            EditCustomersDialog dialog = new EditCustomersDialog(PreferencesHelper.GetPreference("DefaultUser"), ReadOnlyMode);
             if (dialog.ShowDialog() == DialogResult.OK)
             { }
         }
@@ -161,7 +149,7 @@ namespace Cotizaciones
 
         private void adminitracionDeCatalogosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CatalogEditDialog dialog = new CatalogEditDialog();
+            CatalogEditDialog dialog = new CatalogEditDialog(ReadOnlyMode);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
             }

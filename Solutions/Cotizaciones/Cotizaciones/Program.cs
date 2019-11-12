@@ -14,6 +14,7 @@ namespace Cotizaciones
         [STAThread]
         static void Main(string [] args)
         {
+            bool readOnlyMode = false;
             string connectionStringName = ConfigurationHelper.GetConfigurationValue("DefaultDBConnectionName");
             try
             {
@@ -21,6 +22,7 @@ namespace Cotizaciones
                 {
                     ConfigurationHelper.GetConnectionString(args[0]);
                     connectionStringName = args[0];
+                    readOnlyMode = true;
                 }
                 ConfigurationHelper.ConnectionString = connectionStringName;
 
@@ -32,7 +34,7 @@ namespace Cotizaciones
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new ShellMainForm());
+                    Application.Run(new ShellMainForm(readOnlyMode));
                 }
             }
             catch (Exception e)

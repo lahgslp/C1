@@ -15,8 +15,11 @@ namespace Cotizaciones.Dialogs
     {
         string CurrentUser;
         string UserID;
-        public UserManagementDialog(string currentUser)
+        bool ReadOnlyMode;
+
+        public UserManagementDialog(string currentUser, bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             CurrentUser = currentUser;
             InitializeComponent();
         }
@@ -102,6 +105,7 @@ namespace Cotizaciones.Dialogs
 
         private void UserManagementDialog_Load(object sender, EventArgs e)
         {
+            this.btnNewUser.Enabled = !ReadOnlyMode;
             this.btnDeactivateUser.Enabled = false;
             this.btnActivateUser.Enabled = false;
             GetUsers();
@@ -154,16 +158,19 @@ namespace Cotizaciones.Dialogs
                 }
                 else
                 {
-                    User u = GetUser(UserID);
-                    if (u.Active == "A")
+                    if (!ReadOnlyMode)
                     {
-                        this.btnActivateUser.Enabled = false;
-                        this.btnDeactivateUser.Enabled = true;
-                    }
-                    else
-                    {
-                        this.btnActivateUser.Enabled = true;
-                        this.btnDeactivateUser.Enabled = false;
+                        User u = GetUser(UserID);
+                        if (u.Active == "A")
+                        {
+                            this.btnActivateUser.Enabled = false;
+                            this.btnDeactivateUser.Enabled = true;
+                        }
+                        else
+                        {
+                            this.btnActivateUser.Enabled = true;
+                            this.btnDeactivateUser.Enabled = false;
+                        }
                     }
                 }
             }

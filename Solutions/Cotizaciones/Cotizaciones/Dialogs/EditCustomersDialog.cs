@@ -19,14 +19,17 @@ namespace Cotizaciones.Dialogs
 {
     public partial class EditCustomersDialog : Form
     {
+        bool ReadOnlyMode;
         Boolean GlobalChange = false;
         DataSet dsOriginal;
         string user;
         int NewCustomerID = -1, NewContactID = -1;
         UltraGridRow auxRow = null;
         UltraGridCell selectedCell = null;
-        public EditCustomersDialog(string User)
+
+        public EditCustomersDialog(string User, bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             InitializeComponent();
             this.user = User;
         }
@@ -202,7 +205,10 @@ namespace Cotizaciones.Dialogs
         {            
             Boolean IsError = true;
             GlobalChange = true;
-            ubSave.Enabled = true;
+            if (!ReadOnlyMode)
+            {
+                ubSave.Enabled = true;
+            }
             e.Cell.Row.Cells["actualizado"].Value = true;
             if (Convert.ToInt32(e.Cell.Row.Cells["Table"].Value) == 0)
             {
@@ -405,21 +411,23 @@ namespace Cotizaciones.Dialogs
         {
             if (GlobalChange)
             {
-                DialogResult result = MessageBox.Show("Quiere salvar los cambios?", "Save Change", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
+                if (!ReadOnlyMode)
                 {
-                    this.Cursor = Cursors.WaitCursor;
-                    if (!Save())
+                    DialogResult result = MessageBox.Show("Quiere salvar los cambios?", "Save Change", MessageBoxButtons.YesNoCancel);
+                    if (result == DialogResult.Yes)
+                    {
+                        this.Cursor = Cursors.WaitCursor;
+                        if (!Save())
+                        {
+                            e.Cancel = true;
+                        }
+                        this.Cursor = Cursors.Default;
+                    }
+                    else if (result == DialogResult.Cancel)
                     {
                         e.Cancel = true;
                     }
-                    this.Cursor = Cursors.Default;
                 }
-                else
-                    if (result == DialogResult.Cancel)
-                    {
-                        e.Cancel = true;
-                    }
             }
         }
 

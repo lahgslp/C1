@@ -21,6 +21,7 @@ namespace Cotizaciones.Dialogs
    
     public partial class EditDiameterDialog : Form
     {
+        bool ReadOnlyMode;
         bool changeGlobal = false;
         DataSet ds;
         UltraGridCell selectedCell = null;
@@ -28,8 +29,9 @@ namespace Cotizaciones.Dialogs
         string user;
         int EditDiameterSectionID = -1;
         int EditPipeSectionID = -1;
-        public EditDiameterDialog(string User)
+        public EditDiameterDialog(string User, bool readOnlyMode)
         {
+            ReadOnlyMode = readOnlyMode;
             InitializeComponent();
             this.user = User;
             btnSave.Enabled = false;
@@ -38,6 +40,7 @@ namespace Cotizaciones.Dialogs
         private void EditDiameterDialog_Load(object sender, EventArgs e)
         {
             EditDiameterInitialize();
+            this.btnNew.Enabled = !ReadOnlyMode;
         }
 
         private void EditDiameterInitialize()
@@ -466,7 +469,10 @@ namespace Cotizaciones.Dialogs
         private void ugEditDiameter_CellChange(object sender, CellEventArgs e)
         {
             Boolean IsValid = true;
-            btnSave.Enabled = true;
+            if (!ReadOnlyMode)
+            {
+                btnSave.Enabled = true;
+            }
             changeGlobal = true;
             e.Cell.Row.Cells["actualizado"].Value = true;
             switch (e.Cell.Column.Key)
@@ -592,21 +598,23 @@ namespace Cotizaciones.Dialogs
         {
             if (changeGlobal)
             {
-                DialogResult result =MessageBox.Show("Quiere salvar los cambios?", "Save Change", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
+                if (!ReadOnlyMode)
                 {
-                    this.Cursor = Cursors.WaitCursor;
-                    if (!Save())
+                    DialogResult result = MessageBox.Show("Quiere salvar los cambios?", "Save Change", MessageBoxButtons.YesNoCancel);
+                    if (result == DialogResult.Yes)
+                    {
+                        this.Cursor = Cursors.WaitCursor;
+                        if (!Save())
+                        {
+                            e.Cancel = true;
+                        }
+                        this.Cursor = Cursors.Default;
+                    }
+                    else if (result == DialogResult.Cancel)
                     {
                         e.Cancel = true;
                     }
-                    this.Cursor = Cursors.Default;
                 }
-                else
-                    if (result == DialogResult.Cancel)
-                    {
-                        e.Cancel = true;
-                    }
             }
         }
 
