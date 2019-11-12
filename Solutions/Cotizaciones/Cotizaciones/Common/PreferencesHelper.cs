@@ -41,7 +41,16 @@ namespace Cotizaciones.Common
             {
                 Directory.CreateDirectory(path);
             }
-            return path + "\\" + ConfigurationHelper.GetConfigurationValue("PreferencesFile");
+            return path + "\\" + GetConfigurationFileName();
+        }
+        static string GetConfigurationFileName()
+        {
+            string fileName = ConfigurationHelper.GetConfigurationValue("PreferencesFile");
+            if (ConfigurationHelper.ConnectionStringName != ConfigurationHelper.GetConfigurationValue("DefaultDBConnectionName"))
+            {
+                fileName = fileName.Replace(".cfg", ConfigurationHelper.ConnectionStringName + ".cfg");
+            }
+            return fileName;
         }
         static Dictionary<string, string> GetPreferences()
         {

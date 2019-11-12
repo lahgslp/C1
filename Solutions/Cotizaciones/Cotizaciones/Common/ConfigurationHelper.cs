@@ -8,7 +8,7 @@ namespace Cotizaciones.Common
 {
     class ConfigurationHelper
     {
-        public static string ConnectionString { get; set; }
+        public static string ConnectionStringName { get; set; }
         public static string GetConfigurationValue(string key)
         {
             return ConfigurationManager.AppSettings[key].ToString();

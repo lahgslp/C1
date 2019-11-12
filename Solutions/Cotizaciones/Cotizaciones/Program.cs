@@ -24,7 +24,7 @@ namespace Cotizaciones
                     connectionStringName = args[0];
                     readOnlyMode = true;
                 }
-                ConfigurationHelper.ConnectionString = connectionStringName;
+                ConfigurationHelper.ConnectionStringName = connectionStringName;
 
                 if (Cotizaciones.Utilities.CheckConnection(connectionStringName) == false)
                 {

@@ -52,7 +52,7 @@ namespace Cotizaciones.DataModel
 
         public FersumDB() 
         { 
-            DataProvider = ProviderFactory.GetProvider(ConfigurationHelper.ConnectionString);
+            DataProvider = ProviderFactory.GetProvider(ConfigurationHelper.ConnectionStringName);
             Init();
         }
 

@@ -35,7 +35,7 @@ namespace <#=Namespace#>
 
         public <#=DatabaseName#>DB() 
         { 
-            DataProvider = ProviderFactory.GetProvider(ConfigurationHelper.ConnectionString);
+            DataProvider = ProviderFactory.GetProvider(ConfigurationHelper.ConnectionStringName);
             Init();
         }
 

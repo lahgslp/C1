@@ -38,7 +38,7 @@ namespace Cotizaciones
             string additionalMessage = "";
             if (ReadOnlyMode)
             {
-                additionalMessage = " - SOLO LECTURA BASE DE DATOS " + ConfigurationHelper.ConnectionString;
+                additionalMessage = " - SOLO LECTURA BASE DE DATOS " + ConfigurationHelper.ConnectionStringName;
             }
             this.Text = "Sistema de Cotizaciones (Versión " + GetSystemVersion() + ")" + additionalMessage;
         }
