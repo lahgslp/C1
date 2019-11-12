@@ -15,6 +15,7 @@ using SubSonic.Query;
 using SubSonic.Schema;
 using System.Data.Common;
 using System.Collections.Generic;
+using Cotizaciones.Common;
 
 namespace <#=Namespace#>
 {
@@ -34,7 +35,7 @@ namespace <#=Namespace#>
 
         public <#=DatabaseName#>DB() 
         { 
-            DataProvider = ProviderFactory.GetProvider("<#=ConnectionStringName#>");
+            DataProvider = ProviderFactory.GetProvider(ConfigurationHelper.ConnectionString);
             Init();
         }
 

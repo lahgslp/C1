@@ -19,7 +19,7 @@
 <#+
 
     const string Namespace = "Cotizaciones.DataModel";
-    const string ConnectionStringName = "Fersum";
+    const string ConnectionStringName = "Fersum2019";
     
     //This is the name of your database and is used in naming
     //the repository. By default we set it to the connection string name

@@ -32,6 +32,7 @@ using SubSonic.Query;
 using SubSonic.Schema;
 using System.Data.Common;
 using System.Collections.Generic;
+using Cotizaciones.Common;
 
 namespace Cotizaciones.DataModel
 {
@@ -51,7 +52,7 @@ namespace Cotizaciones.DataModel
 
         public FersumDB() 
         { 
-            DataProvider = ProviderFactory.GetProvider("Fersum");
+            DataProvider = ProviderFactory.GetProvider(ConfigurationHelper.ConnectionString);
             Init();
         }
 

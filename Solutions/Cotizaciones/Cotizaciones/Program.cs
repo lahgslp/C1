@@ -12,11 +12,16 @@ namespace Cotizaciones
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string [] args)
         {
+            string connectionStringName = ConfigurationHelper.GetConfigurationValue("DefaultDBConnectionName");
+            if (args.Count() == 0)
+            {
+            }
+            ConfigurationHelper.ConnectionString = connectionStringName;
             try
             {
-                if (Cotizaciones.Utilities.CheckConnection() == false)
+                if (Cotizaciones.Utilities.CheckConnection(connectionStringName) == false)
                 {
                     MessageBox.Show("No se puede establecer una conexión con la base de datos. Por favor verifique que el servidor este encendido y que este conectado a la red apropiadamente.", "Base de datos no accesible", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

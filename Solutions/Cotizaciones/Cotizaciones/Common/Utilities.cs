@@ -67,10 +67,10 @@ namespace Cotizaciones
                 return (false);
         }
 
-        public static bool CheckConnection()
+        public static bool CheckConnection(string ConnectionStringName)
         {
             bool result;
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Fersum"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString);
             try
             {
                 conn.Open();
