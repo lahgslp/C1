@@ -13,5 +13,10 @@ namespace Cotizaciones.Common
         {
             return ConfigurationManager.AppSettings[key].ToString();
         }
+
+        public static string GetConnectionString(string key)
+        {
+            return ConfigurationManager.ConnectionStrings[key].ToString();
+        }
     }
 }
