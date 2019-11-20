@@ -556,7 +556,6 @@ namespace Cotizaciones.PDFWriter
             col.Header = "Peso Total";
             col.Comment = "Kgs";
             col.Size = "1.3cm";
-            col.Format = "N";
             col.MapsToColumn = "Weight";
             columns.Add(col);
 

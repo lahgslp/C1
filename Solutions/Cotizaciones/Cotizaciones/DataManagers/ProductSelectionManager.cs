@@ -261,21 +261,7 @@ namespace Cotizaciones.DataManagers
             //qsd.PaymentDescription = "";
             qsd.DeliveryTimeDescription = "";
             qsd.CurrencyDescription = "";
-            switch (qsd.UnitTypeID)
-            {
-                case 1:
-                    //Metros
-                    qsd.Weight = (Convert.ToDouble(row["Weight"]) * Convert.ToDouble(row["Quantity"])).ToString("#,###,##0.00");
-                    break;
-                case 2:
-                    //Toneladas
-                    qsd.Weight = (1000 * Convert.ToDouble(row["Quantity"])).ToString("#,###,##0.00");
-                    break;
-                default:
-                    qsd.Weight = "Variable";
-                    break;
-            }
-
+            qsd.Weight = CalculateWeightValue(row, qsd.UnitTypeID);
             qsd.Active = "A";
             qsd.Created = DateTime.Now;
             qsd.Creator = user;
@@ -296,26 +282,40 @@ namespace Cotizaciones.DataManagers
                 qsd.PipeSpecificationID = Convert.ToInt32(row["PipeSpecificationID"]);
                 qsd.Quantity = Convert.ToDecimal(row["Quantity"]);
                 qsd.UnitTypeID = Convert.ToInt32(row["UnitTypeID"]);
-                switch (qsd.UnitTypeID)
-                {
-                    case 1:
-                        //Metros
-                        qsd.Weight = (Convert.ToDouble(row["Weight"]) * Convert.ToDouble(row["Quantity"])).ToString("#,###,##0.00");
-                        break;
-                    case 2:
-                        //Toneladas
-                        qsd.Weight = (1000 * Convert.ToDouble(row["Quantity"])).ToString("#,###,##0.00");
-                        break;
-                    default:
-                        qsd.Weight = "Variable";
-                        break;
-                }
+                qsd.Weight = CalculateWeightValue(row, qsd.UnitTypeID);
                 //qsd.Active = "A";
                 qsd.Modified = DateTime.Now;
                 qsd.Modifier = user;
                 qsd.SetIsNew(false);
                 qsd.Save();
             }
+        }
+        private static string CalculateWeightValue(DataRow row, int UnitTypeID)
+        {
+            string WeightValue = "Variable";
+            string Format = "#,###,##0.00";
+            switch (UnitTypeID)
+            {
+                case 1:
+                    //Metros
+                    double meters = Convert.ToDouble(row["Weight"]) * Convert.ToDouble(row["Quantity"]);
+                    if (meters > 999999.99)
+                    {
+                        Format = "#,###,##0";
+                    }
+                    WeightValue = meters.ToString(Format);
+                    break;
+                case 2:
+                    //Toneladas
+                    double tons = Convert.ToDouble(row["Quantity"]) * 1000;
+                    if (tons > 999999.99)
+                    {
+                        Format = "#,###,##0";
+                    }
+                    WeightValue = tons.ToString(Format);
+                    break;
+            }
+            return WeightValue;
         }
     }
 }
