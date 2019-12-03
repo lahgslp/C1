@@ -394,9 +394,9 @@ namespace Cotizaciones.PDFWriter
                 colorMap.Add("1_notesFill", new Color(173, 216, 230));//colorMap.Add("1_notesFill", Colors.LightBlue);
 
                 //Company Ayante
-                colorMap.Add("2_tableBorder", Colors.Maroon);
-                colorMap.Add("2_tableFill", Colors.Coral);
-                colorMap.Add("2_notesFill", Colors.Coral);
+                colorMap.Add("2_tableBorder", new Color(66, 66, 66));
+                colorMap.Add("2_tableFill", new Color(189, 189, 189));
+                colorMap.Add("2_notesFill", new Color(224, 224, 224));
 
                 //Company undefined
                 colorMap.Add("3_tableBorder", new Color(66, 66, 66));
